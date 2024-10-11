@@ -138,7 +138,7 @@ namespace MyViewDicImage
                     offLineTestImageNameList = System.IO.Directory.GetFiles(_imageDir, "*.*").
                     Where(
                     file => file.ToLower().EndsWith(".bmp")
-                    || file.ToLower().EndsWith(".tif")
+                    || file.ToLower().EndsWith(".tif") || file.ToLower().EndsWith(".jpg")
                     ).ToList();
                 }
             }
@@ -223,7 +223,7 @@ namespace MyViewDicImage
             label_SerialNumber.Content = string.Format("【{0}/{1}】", nowIndex + 1, imagesNum);
             nowImageName = imagePath;
         
-            string dicPath = imagePath.Replace(".tif", ".hdict");           
+            string dicPath = imagePath.Replace(".tif", ".hdict").Replace(".bmp", ".hdict").Replace(".jpg", ".hdict");           
             if(System.IO.File.Exists(dicPath))
                 myHWind.loadOutDic(dicPath);
 
