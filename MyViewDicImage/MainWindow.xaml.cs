@@ -48,11 +48,17 @@ namespace MyViewDicImage
         {
             this.KeyDown += MainWindow_KeyDown;
             this.RectHeader.MouseDown += RectHeader_MouseDown;
+
+
             this.MenuShutdown.Click += MenuShutdown_Click;
-
             this.MenuMaximized.Click += MenuMaximized_Click;
-
             this.MenuMinimized.Click += MenuMinimized_Click;
+
+            myHWind.actStr += showGray;
+        }
+        void showGray(string str)
+        {
+            lblGray.Content = str;
         }
 
         private void MenuShutdown_Click(object sender, RoutedEventArgs e)
@@ -80,13 +86,7 @@ namespace MyViewDicImage
             }
         }
 
-        private void MenuMinimized_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-           // App.Current.MainWindow.WindowState = WindowState.Minimized;
-
-           
-        }
-
+    
         private void MenuMaximized_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             if (App.Current.MainWindow.WindowState != WindowState.Maximized)
@@ -283,9 +283,9 @@ namespace MyViewDicImage
             myHWind.ViewController.clearList();
             myHWind.ViewController.addHoImage(ho_ModelImage);
 
-            myHWind.setImageName(imgShortName);
             nowImageName = imagePath;
 
+            lblImageName.Content = imgShortName;
 
             //第几张
             label_SerialNumber.Content = string.Format("【{0}/{1}】", nowIndex + 1, imagesNum);
@@ -356,38 +356,6 @@ namespace MyViewDicImage
 
            
         }
-
-        // 最小化窗口
-        private void MinimizeWindow_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
-        }
-
-        // 最大化或还原窗口
-        private void MaximizeRestoreWindow_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.WindowState == WindowState.Maximized)
-            {
-                this.WindowState = WindowState.Normal;  // 如果已经最大化，则还原
-            }
-            else
-            {
-                this.WindowState = WindowState.Maximized;  // 否则，最大化
-            }
-        }
-
-        // 关闭窗口
-        private void CloseWindow_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();  // 关闭窗口
-        }
-
-        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.LeftButton == System.Windows.Input.MouseButtonState.Pressed)
-            {
-                this.DragMove();  // 允许拖动窗口
-            }
-        }
+    
     }
 }

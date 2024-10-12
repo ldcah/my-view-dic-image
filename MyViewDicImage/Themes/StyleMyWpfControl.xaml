@@ -67,8 +67,8 @@
 
 
     <Style  x:Key="myIconButtonStyle30" TargetType="{x:Type myc:IconButton}" >
-        <Setter Property="Width" Value="30"/>
-        <Setter Property="Height" Value="30"/>
+        <Setter Property="Width" Value="23"/>
+        <Setter Property="Height" Value="23"/>
         <Setter Property="Margin" Value="1,0,1,0"/>
 
         <Setter Property="Template">
@@ -103,12 +103,7 @@
                             <Setter TargetName="bgrect" Property="Margin" Value="0,5,0,0" />
                         </Trigger>
 
-                        <!--
-
-                        <Trigger Property="IsKeyboardFocused" Value="true">
-                            <Setter TargetName="border" Property="BorderBrush" Value="Green" />
-                            <Setter TargetName="bgrect" Property="Fill" Value="Green" />
-                        </Trigger>-->
+                     
 
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
