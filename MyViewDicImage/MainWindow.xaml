@@ -23,18 +23,10 @@
                     <StackPanel  VerticalAlignment="Center" Orientation="Horizontal" >
                         <StackPanel  Orientation="Horizontal"    >
                             <!--菜单栏-->
-                            <Menu Visibility="Hidden"  Name="MainMenu" FontSize="14"   Background="{StaticResource BackgroundBrush}"   >
-                                <MenuItem Header="文件" Background="{StaticResource BackgroundBrush}" Foreground="{StaticResource ForegroundBrush}" >
-                                    <MenuItem Header="加载图片" Click="btnOpenImage_Click" Background="{StaticResource BackgroundBrush}"  Foreground="{StaticResource  ForegroundBrush}"  />
-
-
-                                     <MenuItem Header="图片另存为..." Click="btnSaveAs_Click" Background="{StaticResource BackgroundBrush}" Foreground="{StaticResource ForegroundBrush}"  />
-
-                                    <MenuItem Header="文件所在的位置" Click="btnOpenDir_Click" Background="{StaticResource BackgroundBrush}" Foreground="{StaticResource ForegroundBrush}"  />
-
-
-                                    <MenuItem Header="退出" Click="miClose_Click" Background="{StaticResource BackgroundBrush}" Foreground="{StaticResource ForegroundBrush}"  />
+                            <Menu   Name="MainMenu" FontSize="14"   Background="{StaticResource BackgroundBrush}"   >
+                                <MenuItem Header="文件" Click="btnOpenImage_Click"   Background="{StaticResource BackgroundBrush}" Foreground="{StaticResource ForegroundBrush}" >
                                 </MenuItem>
+
                             </Menu>
                         </StackPanel>
                     </StackPanel>

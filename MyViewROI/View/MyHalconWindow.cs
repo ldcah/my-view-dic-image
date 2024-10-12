@@ -26,6 +26,9 @@ namespace MyViewROI
 
 
         public Action<string> actStr = null;
+
+
+        public Action<MyAction> actClick = null;
       
 
        
@@ -268,26 +271,10 @@ namespace MyViewROI
             }
         }
 
-        public void setImageName(string imgName)
-        {
-            lblImageName.Text = imgName;
-        }
+    
 
 
 
-        public void addRegions(HObject hoRegion, string color="red")
-        {
-            if (hoRegion != null && hoRegion.IsInitialized())
-            {
-                ViewController.addIconicVar(hoRegion, color);
-            }
-        }
-
-
-        public void clearTempRegionMsgWithOutImage()
-        {
-            ViewController.clearTempRegionMsgWithOutImage();
-        }
 
         public void loadOutDic(string dicPath)
         {
@@ -342,10 +329,7 @@ namespace MyViewROI
            
         }
 
-        public void repaint()
-        {
-            ViewController.repaint();
-        }
+     
 
         private void addRegionColor(HTuple dic, string key)
         {
@@ -435,6 +419,33 @@ void testDicKey (HTuple hv__dic, HTuple hv__key, out HTuple hv__exist)
     }
   }
 
+        private void 加载图片ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            doAction(MyAction.ImgLoad);
+        }
 
+        private void 图片另存为ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            doAction(MyAction.ImgSaveAs);
+        }
+
+        private void 打开文件位置ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            doAction(MyAction.ImgLocation);
+        }
+
+        void doAction(MyAction action)
+        {
+            if (actClick != null)
+                actClick(action);
+
+        }
+    }
+
+   public enum MyAction
+    {
+        ImgLoad,
+        ImgSaveAs,
+        ImgLocation
     }
 }
