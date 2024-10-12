@@ -23,6 +23,9 @@ namespace MyViewROI
         /// 2021-10-24 ROI 容器
         /// </summary>
         public ROIController RoiController1 = new ROIController();
+
+
+        public Action<string> actStr = null;
       
 
        
@@ -132,7 +135,12 @@ namespace MyViewROI
                         grayValue = 0;
                     }
 
-                    toolStripStatusLabel1.Text = string.Format("GV : {0}    RC : [ {1} , {2} ]", grayValue.ToString(), row.D.ToString("0"), col.D.ToString("0"));
+                    if(actStr!=null)
+                    {
+                        actStr(string.Format("GV : {0}    RC : [ {1} , {2} ]", grayValue.ToString(), row.D.ToString("0"), col.D.ToString("0")));
+                    }
+
+                   // toolStripStatusLabel1.Text = string.Format("GV : {0}    RC : [ {1} , {2} ]", grayValue.ToString(), row.D.ToString("0"), col.D.ToString("0"));
 
                   
                 }
@@ -143,7 +151,7 @@ namespace MyViewROI
             }
             else
             {
-                toolStripStatusLabel1.Text = null;               
+               // toolStripStatusLabel1.Text = null;               
             }
 
 
