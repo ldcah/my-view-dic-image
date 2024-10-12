@@ -41,8 +41,8 @@
 
             <!--图像区域-->
 
-            <Grid  Grid.Row="1"  Width="1400" Height="815"  Grid.Column="0"  VerticalAlignment="Top" HorizontalAlignment="Left" Grid.ColumnSpan="3">
-                <WindowsFormsHost  Background="{StaticResource BackgroundBrush}" Width="1388" Height="800" HorizontalAlignment="Left" Margin="5" Name="windowsFormsHost1" VerticalAlignment="Top"  />
+            <Grid   Grid.Row="1"  Width="1400" Height="815"  Grid.Column="0"  VerticalAlignment="Top" HorizontalAlignment="Left" Grid.ColumnSpan="3">
+                <WindowsFormsHost  Background="{StaticResource BackgroundBrush}" Width="1388" Height="814" HorizontalAlignment="Left" Margin="5,0,5,0" Name="windowsFormsHost1" VerticalAlignment="Top"  />
             </Grid>
         </Grid>
     </Viewbox>
