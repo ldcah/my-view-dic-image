@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace MyViewDicImage
 {
@@ -35,19 +36,15 @@ namespace MyViewDicImage
         {
             InitializeComponent();
             windowsFormsHost1.Child = myHWind; 
-          
-         
-
-         
 
             this.Loaded += MainWindow_Loaded;
-
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             this.KeyDown += MainWindow_KeyDown;
             this.RectHeader.MouseDown += RectHeader_MouseDown;
+            this.RectHeader.MouseLeftButtonDown += Rectangle_MouseRightButtonDown;
 
 
             this.MenuShutdown.Click += MenuShutdown_Click;
@@ -55,6 +52,8 @@ namespace MyViewDicImage
             this.MenuMinimized.Click += MenuMinimized_Click;
 
             myHWind.actStr += showGray;
+
+            moniDoubleClick();
         }
         void showGray(string str)
         {
@@ -356,6 +355,44 @@ namespace MyViewDicImage
 
            
         }
-    
+
+
+
+        private int clickCount = 0;
+        private DispatcherTimer doubleClickTimer;
+        private void moniDoubleClick()
+        {
+            doubleClickTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(300) // 双击时间间隔
+            };
+            doubleClickTimer.Tick += DoubleClickTimer_Tick;
+        }
+
+        private void DoubleClickTimer_Tick(object sender, EventArgs e)
+        {
+            doubleClickTimer.Stop();
+            clickCount = 0;
+        }
+        private void Rectangle_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            clickCount++;
+            if (clickCount == 1)
+            {
+                doubleClickTimer.Start();
+            }
+            else if (clickCount == 2)
+            {
+                doubleClickTimer.Stop();
+                clickCount = 0;
+
+                _doRectangleDoubleClick(sender);
+            }
+        }
+
+        private void _doRectangleDoubleClick(object sender)
+        {
+            MenuMaximized_MouseLeftButtonUp(null,null);
+        }
     }
 }

@@ -14,7 +14,7 @@
         <Border BorderBrush="{StaticResource BackgroundBrush}">
             <Grid x:Name="GdRoot">               
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="30"/>
                     <RowDefinition/>
                     <RowDefinition Height="40"/>
                 </Grid.RowDefinitions>
@@ -23,7 +23,7 @@
                     <StackPanel  VerticalAlignment="Center" Orientation="Horizontal" >
                         <StackPanel  Orientation="Horizontal"    >
                             <!--菜单栏-->
-                            <Menu  Name="MainMenu" FontSize="16"   Background="{StaticResource BackgroundBrush}"   >
+                            <Menu  Name="MainMenu" FontSize="14"   Background="{StaticResource BackgroundBrush}"   >
                                 <MenuItem Header="文件" Background="{StaticResource BackgroundBrush}" Foreground="{StaticResource ForegroundBrush}" >
                                     <MenuItem Header="加载图片" Click="btnOpenImage_Click" Background="{StaticResource BackgroundBrush}"  Foreground="{StaticResource  ForegroundBrush}"  />
 
@@ -41,8 +41,7 @@
                     </StackPanel>
 
 
-                    <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" 
-                            VerticalAlignment="Top">
+                    <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right"  VerticalAlignment="Top">
 
                         <myc:IconButton Margin="5,5,20,0" x:Name="MenuMinimized"   ToolTip="最小化"   ImagePath="{StaticResource PathData.Min}"   Style="{StaticResource myIconButtonStyle30}"/>
                         <myc:IconButton Margin="5,5,20,0" x:Name="MenuMaximized"  ToolTip="最大化" ImagePath="{StaticResource PathData.Max}"    Style="{StaticResource myIconButtonStyle30}"/>
@@ -76,16 +75,9 @@
 
                         <Label FontSize="14" Foreground="{StaticResource ForegroundBrush}" Width="580" Grid.Column="2" Name="lblImageName" HorizontalContentAlignment="Right" />
                     </Grid>
-
-
-
                 </StatusBar>
-
-
             </Grid>
         </Border>
-
-
     </Viewbox>
 </Window>
 
