@@ -4,61 +4,45 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyViewDicImage"
+        xmlns:myc="clr-namespace:MyWpfControl;assembly=MyWpfControl"  
         mc:Ignorable="d"
+        Background="{StaticResource BackgroundBrush}" Foreground="{StaticResource ForegroundBrush}"
         Title="【 图像查看器 .tif .bmp  】-ludc"  Height="900" Width="1440" WindowStartupLocation="CenterScreen">
-    <Window.Resources>
-        <Style  x:Key="myButtonStyle" TargetType="{x:Type Button}" >   
-            <Setter Property="Width" Value="40"></Setter>
-            <Setter Property="Height" Value="35"></Setter>
-            <Setter Property="VerticalAlignment" Value="Top"></Setter>
-            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
-        </Style>
-    </Window.Resources>
+   
     <Viewbox Stretch="Fill">
-        <Grid Margin="0,0,0,0"  HorizontalAlignment="Left"  VerticalAlignment="Top" >
+        <Grid Margin="0,0,0,0"  HorizontalAlignment="Left"  VerticalAlignment="Top"  >
             <Grid.RowDefinitions>
-                <RowDefinition Height="30"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>              
             </Grid.RowDefinitions>
             <!--菜单栏-->
             <StackPanel Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center" Orientation="Horizontal">
-                <Menu Name="MainMenu" FontSize="14" BorderThickness="2" >
-                    <MenuItem Header="文件" >
-                        <MenuItem Header="加载图片" Click="btnOpenImage_Click"/>
-                        <MenuItem Header="加载目录" Click="btn_OpenFolder_Click"/>
-                        <MenuItem Header="打开目录" Click="btnOpenDir_Click"/>
+                <Menu Name="MainMenu" FontSize="20" BorderThickness="2"  Background="{StaticResource BackgroundBrush}"   >
+                    <MenuItem Header="文件" Background="{StaticResource BackgroundBrush}"
+                      >
+                        <MenuItem Header="加载图片" Click="btnOpenImage_Click"  Background="{StaticResource BackgroundBrush}"/>
+                        <MenuItem Header="加载目录" Click="btn_OpenFolder_Click"  Background="{StaticResource BackgroundBrush}"/>
+                        <MenuItem Header="打开目录" Click="btnOpenDir_Click"  Background="{StaticResource BackgroundBrush}"/>
                     </MenuItem>
 
                 </Menu>
                 <CheckBox  Margin="10,5,0,0" FontSize="14" Name="chkNG"  Content="NG" Checked="CheckBox_Checked"/>
-                <Label Margin="50,0,0,0" Name="lblImageName"></Label>
+                <Label Margin="50,0,0,0" Name="lblImageName" Width="400"></Label>
+                <StackPanel Orientation="Horizontal"    >
+                    <myc:IconButton  ImagePath="{StaticResource pd_first_page}" Margin="20,0,0,0"   ToolTip="第一张"  Click="btnFirst_Click"   Style="{StaticResource myIconButtonStyle40}"      />
+                    <myc:IconButton ImagePath="{StaticResource pd_GoBack}" Margin="20,0,0,0"  ToolTip="上一张 A" Click="btnPre_Click"  Style="{DynamicResource myIconButtonStyle40}"    />
+                    <myc:IconButton ImagePath="{StaticResource pd_Goforward}" Margin="20,0,0,0"  ToolTip="下一张 D"  Click="btnNet_Click"  Style="{DynamicResource myIconButtonStyle40}"     />
+                    <myc:IconButton ImagePath="{StaticResource pd_last_page}" Margin="20,0,0,0"  ToolTip="最后一张" Click="btnLast_Click"  Style="{DynamicResource myIconButtonStyle40}"     />
+                    <Label Width="200" HorizontalContentAlignment="Center" FontSize="20"  Margin="20,0,0,0" x:Name="label_SerialNumber" Content="【0/0】"  FontWeight="Bold" HorizontalAlignment="Left"  VerticalAlignment="Top" Foreground="Black" IsEnabled="False"/>
+
+                </StackPanel>
             </StackPanel>
 
-
             <!--图像区域-->
-
-            <GroupBox Width="1400" Height="815"  Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left"  FontWeight="Bold">
-                <Grid>
-                    <WindowsFormsHost Width="1380" Height="800" HorizontalAlignment="Left" Margin="1,5,1,1" Name="windowsFormsHost1" VerticalAlignment="Top"  />
+            
+                <Grid   Width="1400" Height="815"  Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <WindowsFormsHost Background="{StaticResource BackgroundBrush}" Width="1388" Height="800" HorizontalAlignment="Left" Margin="5" Name="windowsFormsHost1" VerticalAlignment="Top"  />
                 </Grid>
-            </GroupBox>
-           
-            <!--状态栏-->
-            <StatusBar Grid.Row="2" Grid.ColumnSpan="2" FontSize="14" HorizontalAlignment="Center">
-                <StatusBarItem  >
-                    <StackPanel Orientation="Horizontal"   >
-                      
-                        <Button Margin="10,0,0,0"  Content="&lt;&lt;" ToolTip="第一张"  Click="btnFirst_Click" x:Name="btn_FirstImage" Style="{DynamicResource myButtonStyle}"    />
-                        <Button Margin="10,0,0,0"  Content="&lt;" ToolTip="上一张 A" Click="btnPre_Click"  x:Name="btn_PreviousImage" Style="{DynamicResource myButtonStyle}"    />
-                        <Button Margin="20,0,0,0" Content="&gt;" ToolTip="下一张 D"  Click="btnNet_Click"  x:Name="btn_NextImage" Style="{DynamicResource myButtonStyle}"     />
-                        <Button Margin="10,0,0,0" Content="&gt;&gt;" ToolTip="最后一张" Click="btnLast_Click"  x:Name="btn_LastImage" Style="{DynamicResource myButtonStyle}"     />
-                        <Label Width="150" HorizontalContentAlignment="Center" FontSize="16"  Margin="10,0,0,0" x:Name="label_SerialNumber" Content="【0/0】"  FontWeight="Bold" HorizontalAlignment="Left"  VerticalAlignment="Top" Foreground="Black" IsEnabled="False"/>
-                       
-                    </StackPanel>
-                </StatusBarItem>               
-            </StatusBar>
-
         </Grid>
     </Viewbox>
 </Window>

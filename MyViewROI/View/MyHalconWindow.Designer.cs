@@ -44,8 +44,8 @@
             // 
             // hWindowControl1
             // 
-            this.hWindowControl1.BackColor = System.Drawing.Color.Black;
-            this.hWindowControl1.BorderColor = System.Drawing.Color.Black;
+            this.hWindowControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.hWindowControl1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.hWindowControl1.ContextMenuStrip = this.contextMenuStrip1;
             this.hWindowControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hWindowControl1.ImagePart = new System.Drawing.Rectangle(0, 0, 640, 480);
@@ -96,6 +96,8 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.statusStrip1.GripMargin = new System.Windows.Forms.Padding(0, 0, 0, 0);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel4ROI});
@@ -107,12 +109,14 @@
             // 
             // toolStripStatusLabel1
             // 
+            this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(131, 17);
             this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
             // toolStripStatusLabel4ROI
             // 
+            this.toolStripStatusLabel4ROI.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.toolStripStatusLabel4ROI.Name = "toolStripStatusLabel4ROI";
             this.toolStripStatusLabel4ROI.Size = new System.Drawing.Size(30, 17);
             this.toolStripStatusLabel4ROI.Text = "ROI";

@@ -2,18 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Forms;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MyViewDicImage
 {
@@ -138,7 +128,7 @@ namespace MyViewDicImage
                     offLineTestImageNameList = System.IO.Directory.GetFiles(_imageDir, "*.*").
                     Where(
                     file => file.ToLower().EndsWith(".bmp")
-                    || file.ToLower().EndsWith(".tif") || file.ToLower().EndsWith(".jpg")
+                    || file.ToLower().EndsWith(".tif") || file.ToLower().EndsWith(".jpg") || file.ToLower().EndsWith(".png")
                     ).ToList();
                 }
             }
@@ -223,7 +213,7 @@ namespace MyViewDicImage
             label_SerialNumber.Content = string.Format("【{0}/{1}】", nowIndex + 1, imagesNum);
             nowImageName = imagePath;
         
-            string dicPath = imagePath.Replace(".tif", ".hdict").Replace(".bmp", ".hdict").Replace(".jpg", ".hdict");           
+            string dicPath = imagePath.Replace(".tif", ".hdict").Replace(".bmp", ".hdict").Replace(".jpg", ".hdict").Replace(".png", ".hdict");           
             if(System.IO.File.Exists(dicPath))
                 myHWind.loadOutDic(dicPath);
 
