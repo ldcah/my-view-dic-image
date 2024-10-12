@@ -23,9 +23,9 @@
             <Setter.Value>
 
                 <ControlTemplate TargetType="{x:Type myc:IconButton}">
-                    <Border  x:Name="border"    CornerRadius="3,3,3,3" BorderBrush="White"  BorderThickness="1" Background="Transparent" >
+                    <Border  x:Name="border"    CornerRadius="3,3,3,3" BorderBrush="#7ac1ff"  BorderThickness="1" Background="Transparent" >
                         <StackPanel   VerticalAlignment="Center"  Background="Transparent">
-                            <Path   Width="18" Height="18"  Fill="White" x:Name="bgrect" Data="{Binding ImagePath,RelativeSource={RelativeSource TemplatedParent} ,Converter={StaticResource converString2Path}}"     Stretch="Fill"></Path>
+                            <Path   Width="18" Height="18"  Fill="#7ac1ff" x:Name="bgrect" Data="{Binding ImagePath,RelativeSource={RelativeSource TemplatedParent} ,Converter={StaticResource converString2Path}}"     Stretch="Fill"></Path>
                         </StackPanel>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -38,15 +38,15 @@
 
 
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="border" Property="BorderBrush" Value="Black" />
-                            <Setter TargetName="bgrect" Property="Fill" Value="Black" />
+                            <Setter TargetName="border" Property="BorderBrush" Value="#1296db" />
+                            <Setter TargetName="bgrect" Property="Fill" Value="#1296db" />
                         </Trigger>
 
 
 
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="border" Property="BorderBrush" Value="Green" />
-                            <Setter TargetName="bgrect" Property="Fill" Value="Green" />
+                            <Setter TargetName="border" Property="BorderBrush" Value="blue" />
+                            <Setter TargetName="bgrect" Property="Fill" Value="#7ac1ff" />
                             <Setter TargetName="bgrect" Property="Stretch" Value="Uniform" />
                             <Setter TargetName="bgrect" Property="Margin" Value="0,5,0,0" />
                         </Trigger>
@@ -75,7 +75,7 @@
             <Setter.Value>
 
                 <ControlTemplate TargetType="{x:Type myc:IconButton}">
-                    <Border  x:Name="border"    CornerRadius="3,3,3,3" BorderBrush="White"  BorderThickness="1" Background="Transparent" >
+                    <Border  x:Name="border"    CornerRadius="3,3,3,3" BorderBrush="Transparent"  BorderThickness="1" Background="Transparent" >
                         <StackPanel   VerticalAlignment="Center"  Background="Transparent">
                             <Path   Width="18" Height="18"  Fill="White" x:Name="bgrect" Data="{Binding ImagePath,RelativeSource={RelativeSource TemplatedParent} ,Converter={StaticResource converString2Path}}"     Stretch="Fill"></Path>
                         </StackPanel>
@@ -90,15 +90,15 @@
 
 
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="border" Property="BorderBrush" Value="Black" />
-                            <Setter TargetName="bgrect" Property="Fill" Value="Black" />
+                            <Setter TargetName="border" Property="BorderBrush" Value="Transparent" />
+                            <Setter TargetName="bgrect" Property="Fill" Value="Gray" />
                         </Trigger>
 
 
 
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="border" Property="BorderBrush" Value="Green" />
-                            <Setter TargetName="bgrect" Property="Fill" Value="Green" />
+                            <Setter TargetName="border" Property="BorderBrush" Value="Transparent" />
+                            <Setter TargetName="bgrect" Property="Fill" Value="White" />
                             <Setter TargetName="bgrect" Property="Stretch" Value="Uniform" />
                             <Setter TargetName="bgrect" Property="Margin" Value="0,5,0,0" />
                         </Trigger>

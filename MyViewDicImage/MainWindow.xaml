@@ -30,7 +30,7 @@
 
                                      <MenuItem Header="图片另存为..." Click="btnSaveAs_Click" Background="{StaticResource BackgroundBrush}" Foreground="{StaticResource ForegroundBrush}"  />
 
-                                    <MenuItem Header="打开文件所在的位置" Click="btnOpenDir_Click" Background="{StaticResource BackgroundBrush}" Foreground="{StaticResource ForegroundBrush}"  />
+                                    <MenuItem Header="文件所在的位置" Click="btnOpenDir_Click" Background="{StaticResource BackgroundBrush}" Foreground="{StaticResource ForegroundBrush}"  />
 
 
                                     <MenuItem Header="退出" Click="miClose_Click" Background="{StaticResource BackgroundBrush}" Foreground="{StaticResource ForegroundBrush}"  />
@@ -50,11 +50,8 @@
 
 
                 <Grid Grid.Row="1"  x:Name="GdContent"  >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="12*"/>
-                        <ColumnDefinition Width="703*"/>
-                    </Grid.ColumnDefinitions>
-                    <WindowsFormsHost Margin="0"  Background="{StaticResource BackgroundBrush}" Width="1430" Height="810" HorizontalAlignment="Left"  Name="windowsFormsHost1" VerticalAlignment="Top" Grid.ColumnSpan="2"  />
+                   
+                    <WindowsFormsHost Margin="0"  Background="{StaticResource BackgroundBrush}" Width="1430" Height="810" HorizontalAlignment="Left"  Name="windowsFormsHost1" VerticalAlignment="Top"   />
                 </Grid>
 
                 <StatusBar Grid.Row="2" Background="{StaticResource BackgroundBrush}" >

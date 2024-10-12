@@ -36,7 +36,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>l.ico</ApplicationIcon>
+    <ApplicationIcon>图片.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="halcondotnetxl">
@@ -121,9 +121,8 @@
       <Name>MyViewROI</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="l.ico" />
+    <Resource Include="图片.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
