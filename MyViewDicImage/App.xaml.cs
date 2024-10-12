@@ -15,6 +15,7 @@ namespace MyViewDicImage
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+
             MainWindow m = new MainWindow();
             m.Show();
             if (e != null && e.Args != null && e.Args.Length == 1)
@@ -23,7 +24,7 @@ namespace MyViewDicImage
                 m.OnStartup(e.Args[0].Split('*'));
             }
 
-            //m.loadRegions();
+
 
             base.OnStartup(e);
         }

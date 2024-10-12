@@ -7,12 +7,12 @@
         xmlns:myc="clr-namespace:MyWpfControl;assembly=MyWpfControl"  
         mc:Ignorable="d"
         Background="{StaticResource BackgroundBrush}" Foreground="{StaticResource ForegroundBrush}"
-        Title="【图像查看器】"  Height="900" Width="1440" WindowStartupLocation="CenterScreen" WindowStyle="None" >
+        Title="【图像查看器】"  Height="900" Width="1440" WindowStartupLocation="CenterScreen" WindowStyle="None" WindowState="Normal"  ResizeMode="NoResize">
 
     <Viewbox Stretch="Fill">
 
         <Border BorderBrush="{StaticResource BackgroundBrush}">
-            <Grid x:Name="GdRoot">               
+            <Grid x:Name="GdRoot">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"/>
                     <RowDefinition/>
@@ -28,11 +28,10 @@
                                     <MenuItem Header="加载图片" Click="btnOpenImage_Click" Background="{StaticResource BackgroundBrush}"  Foreground="{StaticResource  ForegroundBrush}"  />
 
 
-                                    <MenuItem Header="加载目录" Click="btn_OpenFolder_Click" Background="{StaticResource BackgroundBrush}" Foreground="{StaticResource ForegroundBrush}"  />
+                                     <MenuItem Header="图片另存为..." Click="btnSaveAs_Click" Background="{StaticResource BackgroundBrush}" Foreground="{StaticResource ForegroundBrush}"  />
 
-                                    <MenuItem Header="打开目录" Click="btnOpenDir_Click" Background="{StaticResource BackgroundBrush}" Foreground="{StaticResource ForegroundBrush}"  />
+                                    <MenuItem Header="打开文件所在的位置" Click="btnOpenDir_Click" Background="{StaticResource BackgroundBrush}" Foreground="{StaticResource ForegroundBrush}"  />
 
-                                    <MenuItem Header="另存为..." Click="btnSaveAs_Click" Background="{StaticResource BackgroundBrush}" Foreground="{StaticResource ForegroundBrush}"  />
 
                                     <MenuItem Header="退出" Click="miClose_Click" Background="{StaticResource BackgroundBrush}" Foreground="{StaticResource ForegroundBrush}"  />
                                 </MenuItem>
@@ -51,7 +50,11 @@
 
 
                 <Grid Grid.Row="1"  x:Name="GdContent"  >
-                    <WindowsFormsHost Margin="0"  Background="{StaticResource BackgroundBrush}" Width="1430" Height="810" HorizontalAlignment="Left"  Name="windowsFormsHost1" VerticalAlignment="Top"  />
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="12*"/>
+                        <ColumnDefinition Width="703*"/>
+                    </Grid.ColumnDefinitions>
+                    <WindowsFormsHost Margin="0"  Background="{StaticResource BackgroundBrush}" Width="1430" Height="810" HorizontalAlignment="Left"  Name="windowsFormsHost1" VerticalAlignment="Top" Grid.ColumnSpan="2"  />
                 </Grid>
 
                 <StatusBar Grid.Row="2" Background="{StaticResource BackgroundBrush}" >

@@ -1,6 +1,8 @@
 ﻿using HalconDotNet;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -300,11 +302,23 @@ namespace MyViewDicImage
    
         private void btnOpenDir_Click(object sender, RoutedEventArgs e)
         {
-            Open(_loadImgDir);
+            Open(imageSrcPath);
         }
 
-        public static string Open(string path)
+        public  string Open(string path)
         {
+
+            if(File.Exists(path))
+            {
+
+               
+                    // 打开资源管理器，并选中指定文件
+                    Process.Start("explorer.exe", $"/select,\"{path}\"");
+                OpenFolderAndSelectFile(path);
+                return "";
+            }
+            else
+            { 
             path = path.TrimEnd('\\');
             if (System.IO.Directory.Exists(path))
             {
@@ -321,6 +335,7 @@ namespace MyViewDicImage
             else
             {
                 return path + "目录不存在！";
+            }
             }
         }
 
@@ -393,6 +408,19 @@ namespace MyViewDicImage
         private void _doRectangleDoubleClick(object sender)
         {
             MenuMaximized_MouseLeftButtonUp(null,null);
+        }
+
+        public void OpenFolderAndSelectFile(string filePath)
+        {
+            if (File.Exists(filePath))
+            {
+                // 打开资源管理器，并选中指定文件
+                Process.Start("explorer.exe", $"/select,\"{filePath}\"");
+            }
+            else
+            {
+                MessageBox.Show("文件不存在！");
+            }
         }
     }
 }

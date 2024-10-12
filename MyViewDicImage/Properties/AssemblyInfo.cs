@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("MyViewDicImage")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("ldcah@qq.com")]
 [assembly: AssemblyProduct("MyViewDicImage")]
-[assembly: AssemblyCopyright("Copyright ©  2024")]
+[assembly: AssemblyCopyright("Copyright ©  2024  ldcah@qq.com")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
