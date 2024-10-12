@@ -2,6 +2,15 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
 
+
+    <s:String x:Key="PathData.Min">M 10,20 L 100,20 100,30 10,30 M 10,40 10,10 Z</s:String>
+
+    <s:String x:Key="PathData.Max">M0,0L8,0L8,2L0,2z</s:String>
+
+
+    <s:String x:Key="PathData.Close">M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z</s:String>
+
+
     <s:String x:Key="pd_first_page">
         M701.610667 768.426667L445.098667 512l256.512-256.426667 60.373333 60.330667-196.266667 196.266667 196.266667 196.266666-60.373333 59.989334z m-354.133334-0.426667h-85.333333V256h85.333333v512z
     </s:String>

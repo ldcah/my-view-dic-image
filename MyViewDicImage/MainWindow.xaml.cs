@@ -35,7 +35,85 @@ namespace MyViewDicImage
         {
             InitializeComponent();
             windowsFormsHost1.Child = myHWind; 
+          
+         
+
+         
+
+            this.Loaded += MainWindow_Loaded;
+
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
             this.KeyDown += MainWindow_KeyDown;
+            this.RectHeader.MouseDown += RectHeader_MouseDown;
+            this.MenuShutdown.Click += MenuShutdown_Click;
+
+            this.MenuMaximized.Click += MenuMaximized_Click;
+
+            this.MenuMinimized.Click += MenuMinimized_Click;
+        }
+
+        private void MenuShutdown_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown();
+        }
+
+        private void MenuMinimized_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void MenuMaximized_Click(object sender, RoutedEventArgs e)
+        {
+            if (App.Current.MainWindow.WindowState != WindowState.Maximized)
+            {
+                App.Current.MainWindow.WindowState = WindowState.Maximized;
+
+                MenuMaximized.ToolTip = "向下还原";
+            }
+            else
+            {
+                App.Current.MainWindow.WindowState = WindowState.Normal;
+                MenuMaximized.ToolTip = "最大化";
+            }
+        }
+
+        private void MenuMinimized_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+           // App.Current.MainWindow.WindowState = WindowState.Minimized;
+
+           
+        }
+
+        private void MenuMaximized_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (App.Current.MainWindow.WindowState != WindowState.Maximized)
+            {
+                App.Current.MainWindow.WindowState = WindowState.Maximized;
+
+                MenuMaximized.ToolTip = "向下还原";
+            }
+            else
+            {
+                App.Current.MainWindow.WindowState = WindowState.Normal;
+                MenuMaximized.ToolTip = "最大化";
+            }
+        }
+
+        private void MenuShutdown_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            App.Current.Shutdown();
+        }
+
+        private void RectHeader_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 1)
+            {
+                if (e.LeftButton == MouseButtonState.Pressed)
+                    DragMove();
+            }
         }
         private void btnOpenImage_Click(object sender, RoutedEventArgs e)
         {
@@ -277,6 +355,39 @@ namespace MyViewDicImage
             }
 
            
+        }
+
+        // 最小化窗口
+        private void MinimizeWindow_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        // 最大化或还原窗口
+        private void MaximizeRestoreWindow_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                this.WindowState = WindowState.Normal;  // 如果已经最大化，则还原
+            }
+            else
+            {
+                this.WindowState = WindowState.Maximized;  // 否则，最大化
+            }
+        }
+
+        // 关闭窗口
+        private void CloseWindow_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();  // 关闭窗口
+        }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == System.Windows.Input.MouseButtonState.Pressed)
+            {
+                this.DragMove();  // 允许拖动窗口
+            }
         }
     }
 }

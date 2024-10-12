@@ -7,51 +7,76 @@
         xmlns:myc="clr-namespace:MyWpfControl;assembly=MyWpfControl"  
         mc:Ignorable="d"
         Background="{StaticResource BackgroundBrush}" Foreground="{StaticResource ForegroundBrush}"
-        Title="【图像查看器】"  Height="900" Width="1440" WindowStartupLocation="CenterScreen">
+        Title="【图像查看器】"  Height="900" Width="1440" WindowStartupLocation="CenterScreen" WindowStyle="None" >
 
     <Viewbox Stretch="Fill">
-        <Grid Margin="0,0,0,0"  HorizontalAlignment="Left"  VerticalAlignment="Top"  >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="300"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="500"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="40"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <!--菜单栏-->
-            <Menu Grid.Row="0" Grid.Column="0" Name="MainMenu" FontSize="16" BorderThickness="2"  Background="{StaticResource BackgroundBrush}"   >
-                <MenuItem Header="文件" Background="{StaticResource BackgroundBrush}"                      >
-                    <MenuItem Header="加载图片" Click="btnOpenImage_Click"  />
-                 
-                    <Separator/>
-                    <MenuItem Header="加载目录" Click="btn_OpenFolder_Click"  />
-                    <Separator/>
-                    <MenuItem Header="打开目录" Click="btnOpenDir_Click"  />
-                    <Separator/>
-                    <MenuItem Header="另存为..." Click="btnSaveAs_Click"  />
-                    <Separator/>
-                    <MenuItem Header="退出" Click="miClose_Click"  />
-                </MenuItem>
-            </Menu>        
-            <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal" >
-                <StackPanel  Orientation="Horizontal"    >
-                    <Label Margin="20,0,0,0" Width="150" HorizontalContentAlignment="Right" FontSize="18"   x:Name="label_SerialNumber" Content="【0/0】"   HorizontalAlignment="Left"  VerticalAlignment="Top" Foreground="Black" IsEnabled="False"/>
 
-                    <myc:IconButton  ImagePath="{StaticResource pd_first_page}" Margin="20,0,0,0"   ToolTip="第一张"  Click="btnFirst_Click"   Style="{StaticResource myIconButtonStyle40}"      />
-                    <myc:IconButton ImagePath="{StaticResource pd_GoBack}" Margin="20,0,0,0"  ToolTip="上一张 A" Click="btnPre_Click"  Style="{StaticResource myIconButtonStyle40}"    />
-                    <myc:IconButton ImagePath="{StaticResource pd_Goforward}" Margin="20,0,0,0"  ToolTip="下一张 D"  Click="btnNet_Click"  Style="{StaticResource myIconButtonStyle40}"     />
-                    <myc:IconButton ImagePath="{StaticResource pd_last_page}" Margin="20,0,0,0"  ToolTip="最后一张" Click="btnLast_Click"  Style="{StaticResource myIconButtonStyle40}"     />
-                      </StackPanel>
-            </StackPanel>
+        <Border Margin="3" BorderBrush="Gray">
+            <Grid x:Name="GdRoot">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid x:Name="GdHeader" Grid.Column="1" Background="#FF2D2D30">
 
-            <!--图像区域-->
 
-            <Grid   Grid.Row="1"  Width="1400" Height="815"  Grid.Column="0"  VerticalAlignment="Top" HorizontalAlignment="Left" Grid.ColumnSpan="3">
-                <WindowsFormsHost  Background="{StaticResource BackgroundBrush}" Width="1388" Height="814" HorizontalAlignment="Left" Margin="8,0,8,0" Name="windowsFormsHost1" VerticalAlignment="Top"  />
+                    <Rectangle x:Name="RectHeader" Fill="Transparent"/>
+
+
+                    <StackPanel Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center" Orientation="Horizontal" >
+
+                        <StackPanel  Orientation="Horizontal"    >
+                            <!--菜单栏-->
+                            <Menu  Name="MainMenu" FontSize="16" BorderThickness="2"  Background="{StaticResource BackgroundBrush}"   >
+                                <MenuItem Header="文件" Background="{StaticResource BackgroundBrush}" Foreground="{StaticResource ForegroundBrush}" >
+                                    <MenuItem Header="加载图片" Click="btnOpenImage_Click"  Foreground="{StaticResource BackgroundBrush}"  />
+
+                                    <Separator/>
+                                    <MenuItem Header="加载目录" Click="btn_OpenFolder_Click" Foreground="{StaticResource BackgroundBrush}"  />
+                                    <Separator/>
+                                    <MenuItem Header="打开目录" Click="btnOpenDir_Click" Foreground="{StaticResource BackgroundBrush}"  />
+                                    <Separator/>
+                                    <MenuItem Header="另存为..." Click="btnSaveAs_Click" Foreground="{StaticResource BackgroundBrush}"  />
+                                    <Separator/>
+                                    <MenuItem Header="退出" Click="miClose_Click" Foreground="{StaticResource BackgroundBrush}"  />
+                                </MenuItem>
+                            </Menu>
+                            <Label Foreground="{StaticResource ForegroundBrush}"  Margin="20,0,0,0" Width="150" HorizontalContentAlignment="Right" FontSize="18"   x:Name="label_SerialNumber" Content="【0/0】"   HorizontalAlignment="Left"  VerticalAlignment="Top"  IsEnabled="False"/>
+
+                            <myc:IconButton  ImagePath="{StaticResource pd_first_page}" Margin="20,0,0,0"   ToolTip="第一张"  Click="btnFirst_Click"   Style="{StaticResource myIconButtonStyle40}"      />
+                            <myc:IconButton ImagePath="{StaticResource pd_GoBack}" Margin="20,0,0,0"  ToolTip="上一张 A" Click="btnPre_Click"  Style="{StaticResource myIconButtonStyle40}"    />
+                            <myc:IconButton ImagePath="{StaticResource pd_Goforward}" Margin="20,0,0,0"  ToolTip="下一张 D"  Click="btnNet_Click"  Style="{StaticResource myIconButtonStyle40}"     />
+                            <myc:IconButton ImagePath="{StaticResource pd_last_page}" Margin="20,0,0,0"  ToolTip="最后一张" Click="btnLast_Click"  Style="{StaticResource myIconButtonStyle40}"     />
+                        </StackPanel>
+                    </StackPanel>
+
+
+                    <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" 
+                            VerticalAlignment="Top">
+
+                        <myc:IconButton Margin="5,0,0,0" x:Name="MenuMinimized"   ToolTip="最小化"
+                        ImagePath="{StaticResource PathData.Min}" 
+                        Style="{StaticResource myIconButtonStyle30}"/>
+
+                        <myc:IconButton Margin="5,0,0,0" x:Name="MenuMaximized"  ToolTip="最大化"
+                        ImagePath="{StaticResource PathData.Max}" 
+                        Style="{StaticResource myIconButtonStyle30}"/>
+                        <myc:IconButton Margin="5,0,0,0" x:Name="MenuShutdown"  ToolTip="关闭"
+                        ImagePath="{StaticResource PathData.Close}" 
+                        Style="{StaticResource myIconButtonStyle30}"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="1" x:Name="GdContent" Background="#FF1E1E1E" ClipToBounds="True">
+                    <WindowsFormsHost  Background="{StaticResource BackgroundBrush}" Width="1388" Height="814" HorizontalAlignment="Left" Margin="8,0,8,0" Name="windowsFormsHost1" VerticalAlignment="Top"  />
+                </Grid>
+
             </Grid>
-        </Grid>
+        </Border>
+
+
     </Viewbox>
 </Window>
 

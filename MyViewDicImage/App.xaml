@@ -10,7 +10,7 @@
                 <ResourceDictionary Source="Themes/PathDatas.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
 
-            <Color x:Key="BackgroundColor">#7F7F7F</Color>
+            <Color x:Key="BackgroundColor">#707070</Color>
             <Color x:Key="ForegroundColor">#FFFFFF</Color>
 
             <!-- 创建对应的刷子 -->
