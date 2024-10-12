@@ -181,7 +181,10 @@ namespace MyViewDicImage
 
         }
 
-  
+
+        string imgShortName = "";
+        string imageSrcPath = "";
+
         private void loadTestImage(string imagePath)
         {
             if (ho_ModelImage != null && ho_ModelImage.IsInitialized())
@@ -193,7 +196,8 @@ namespace MyViewDicImage
             if (!System.IO.File.Exists(imagePath))
                 return;
 
-            string imgShortName = imagePath.Substring(imagePath.LastIndexOf("\\") + 1);
+             imgShortName = imagePath.Substring(imagePath.LastIndexOf("\\") + 1);
+            imageSrcPath = imagePath;
 
             //读取图像
             HOperatorSet.ReadImage(out ho_ModelImage, imagePath);
@@ -242,6 +246,37 @@ namespace MyViewDicImage
                 return path + "目录不存在！";
             }
         }
-     
+
+        private void miClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnSaveAs_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(imageSrcPath))
+                return;
+            System.Windows.Forms.SaveFileDialog m_Dialog = new System.Windows.Forms.SaveFileDialog();
+            m_Dialog.FileName = imgShortName;
+            System.Windows.Forms.DialogResult result = m_Dialog.ShowDialog();
+            if (result == System.Windows.Forms.DialogResult.Cancel)
+            {
+                return;
+            }
+
+            if (imageSrcPath.Equals(m_Dialog.FileName, StringComparison.OrdinalIgnoreCase))
+                return;
+
+            try
+            {
+                System.IO.File.Copy(imageSrcPath, m_Dialog.FileName);
+            }
+            catch(Exception ex)
+            {
+
+            }
+
+           
+        }
     }
 }

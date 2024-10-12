@@ -23,9 +23,16 @@
             <!--菜单栏-->
             <Menu Grid.Row="0" Grid.Column="0" Name="MainMenu" FontSize="16" BorderThickness="2"  Background="{StaticResource BackgroundBrush}"   >
                 <MenuItem Header="文件" Background="{StaticResource BackgroundBrush}"                      >
-                    <MenuItem Header="加载图片" Click="btnOpenImage_Click"  Background="{StaticResource BackgroundBrush}"/>
-                    <MenuItem Header="加载目录" Click="btn_OpenFolder_Click"  Background="{StaticResource BackgroundBrush}"/>
-                    <MenuItem Header="打开目录" Click="btnOpenDir_Click"  Background="{StaticResource BackgroundBrush}"/>
+                    <MenuItem Header="加载图片" Click="btnOpenImage_Click"  />
+                 
+                    <Separator/>
+                    <MenuItem Header="加载目录" Click="btn_OpenFolder_Click"  />
+                    <Separator/>
+                    <MenuItem Header="打开目录" Click="btnOpenDir_Click"  />
+                    <Separator/>
+                    <MenuItem Header="另存为..." Click="btnSaveAs_Click"  />
+                    <Separator/>
+                    <MenuItem Header="退出" Click="miClose_Click"  />
                 </MenuItem>
             </Menu>        
             <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal" >
