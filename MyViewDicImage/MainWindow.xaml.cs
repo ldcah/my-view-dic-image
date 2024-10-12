@@ -54,8 +54,24 @@ namespace MyViewDicImage
             this.MenuMinimized.Click += MenuMinimized_Click;
 
             myHWind.actStr += showGray;
+            myHWind.actClick += doMyAction;
 
             moniDoubleClick();
+        }
+        void doMyAction(MyViewROI.MyAction _action)
+        {
+            switch(_action)
+            {
+                case MyViewROI.MyAction.ImgLoad:
+                    btnOpenImage_Click(null,null);
+                    break;
+                case MyViewROI.MyAction.ImgSaveAs:
+                    btnSaveAs_Click(null,null);
+                    break;
+                case MyViewROI.MyAction.ImgLocation:
+                    btnOpenDir_Click(null,null);
+                    break;
+            }    
         }
         void showGray(string str)
         {

@@ -23,7 +23,7 @@
                     <StackPanel  VerticalAlignment="Center" Orientation="Horizontal" >
                         <StackPanel  Orientation="Horizontal"    >
                             <!--菜单栏-->
-                            <Menu  Name="MainMenu" FontSize="14"   Background="{StaticResource BackgroundBrush}"   >
+                            <Menu Visibility="Hidden"  Name="MainMenu" FontSize="14"   Background="{StaticResource BackgroundBrush}"   >
                                 <MenuItem Header="文件" Background="{StaticResource BackgroundBrush}" Foreground="{StaticResource ForegroundBrush}" >
                                     <MenuItem Header="加载图片" Click="btnOpenImage_Click" Background="{StaticResource BackgroundBrush}"  Foreground="{StaticResource  ForegroundBrush}"  />
 
