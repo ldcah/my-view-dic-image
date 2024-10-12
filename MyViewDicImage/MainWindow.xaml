@@ -30,7 +30,7 @@
             </Menu>        
             <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal" >
                 <StackPanel  Orientation="Horizontal"    >
-                    <Label Margin="20,0,0,0" Width="150" HorizontalContentAlignment="Right" FontSize="18"   x:Name="label_SerialNumber" Content="【0/0】"  FontWeight="Bold" HorizontalAlignment="Left"  VerticalAlignment="Top" Foreground="Black" IsEnabled="False"/>
+                    <Label Margin="20,0,0,0" Width="150" HorizontalContentAlignment="Right" FontSize="18"   x:Name="label_SerialNumber" Content="【0/0】"   HorizontalAlignment="Left"  VerticalAlignment="Top" Foreground="Black" IsEnabled="False"/>
 
                     <myc:IconButton  ImagePath="{StaticResource pd_first_page}" Margin="20,0,0,0"   ToolTip="第一张"  Click="btnFirst_Click"   Style="{StaticResource myIconButtonStyle40}"      />
                     <myc:IconButton ImagePath="{StaticResource pd_GoBack}" Margin="20,0,0,0"  ToolTip="上一张 A" Click="btnPre_Click"  Style="{StaticResource myIconButtonStyle40}"    />
@@ -42,7 +42,7 @@
             <!--图像区域-->
 
             <Grid   Grid.Row="1"  Width="1400" Height="815"  Grid.Column="0"  VerticalAlignment="Top" HorizontalAlignment="Left" Grid.ColumnSpan="3">
-                <WindowsFormsHost  Background="{StaticResource BackgroundBrush}" Width="1388" Height="814" HorizontalAlignment="Left" Margin="5,0,5,0" Name="windowsFormsHost1" VerticalAlignment="Top"  />
+                <WindowsFormsHost  Background="{StaticResource BackgroundBrush}" Width="1388" Height="814" HorizontalAlignment="Left" Margin="8,0,8,0" Name="windowsFormsHost1" VerticalAlignment="Top"  />
             </Grid>
         </Grid>
     </Viewbox>
