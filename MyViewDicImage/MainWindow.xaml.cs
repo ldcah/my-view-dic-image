@@ -438,5 +438,55 @@ namespace MyViewDicImage
                 MessageBox.Show("文件不存在！");
             }
         }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (offLineTestImageNameList.Count < 1)
+                return;
+            
+            if(MessageBox.Show("是否确定要删除此文件 ?","删除此文件", MessageBoxButton.YesNo)== MessageBoxResult.Yes)
+            {
+                try
+                {
+                    File.Delete(imageSrcPath);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(string.Format("删除文件异常:{0}", ex.Message));
+                    return;
+                }
+                offLineTestImageNameList.Remove(imageSrcPath);
+
+
+                if (offLineTestImageNameList.Count==0)
+                {
+                    myHWind.ViewController.clearList();
+                    myHWind.ViewController.repaint();
+                    nowIndex = 0;
+                    label_SerialNumber.Content = "";
+                    imageSrcPath = "";
+                    imgShortName = "";
+                    return;
+                }
+
+               
+
+                imagesNum = offLineTestImageNameList.Count;
+
+
+                if (nowIndex< offLineTestImageNameList.Count())
+                {
+                   
+                        loadTestImage(offLineTestImageNameList[nowIndex]);
+                    
+                }
+                else 
+                {
+                    nowIndex = nowIndex - 1;
+                    loadTestImage(offLineTestImageNameList[nowIndex]);
+                }
+
+            }
+        }
     }
 }

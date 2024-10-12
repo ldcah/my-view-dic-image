@@ -50,8 +50,8 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="400"/>
-                            <ColumnDefinition Width="400" />
-                            <ColumnDefinition Width="580"/>
+                            <ColumnDefinition Width="440" />
+                            <ColumnDefinition Width="540"/>
                         </Grid.ColumnDefinitions>
 
                         <Label FontSize="16"  Name="lblGray" Foreground="{StaticResource ForegroundBrush}" />
@@ -59,10 +59,13 @@
                         <StackPanel  Orientation="Horizontal" Grid.Column="1"    >
                             <Label Foreground="{StaticResource ForegroundBrush}"   Width="150" HorizontalContentAlignment="Right" FontSize="18"   x:Name="label_SerialNumber" Content="【0/0】"   HorizontalAlignment="Left"  VerticalAlignment="Top"  IsEnabled="False"/>
 
-                            <myc:IconButton  ImagePath="{StaticResource pd_first_page}" Margin="10,0,0,0"   ToolTip="第一张"  Click="btnFirst_Click"   Style="{StaticResource myIconButtonStyle40}"      />
-                            <myc:IconButton ImagePath="{StaticResource pd_GoBack}" Margin="15,0,0,0"  ToolTip="上一张 A" Click="btnPre_Click"  Style="{StaticResource myIconButtonStyle40}"    />
-                            <myc:IconButton ImagePath="{StaticResource pd_Goforward}" Margin="15,0,0,0"  ToolTip="下一张 D"  Click="btnNet_Click"  Style="{StaticResource myIconButtonStyle40}"     />
-                            <myc:IconButton ImagePath="{StaticResource pd_last_page}" Margin="15,0,0,0"  ToolTip="最后一张" Click="btnLast_Click"  Style="{StaticResource myIconButtonStyle40}"     />
+                            <myc:IconButton  ImagePath="{StaticResource pd_first_page}" Margin="10,0,0,0"   ToolTip="第一个"  Click="btnFirst_Click"   Style="{StaticResource myIconButtonStyle40}"      />
+                            <myc:IconButton ImagePath="{StaticResource pd_GoBack}" Margin="15,0,0,0"  ToolTip="上一个 A" Click="btnPre_Click"  Style="{StaticResource myIconButtonStyle40}"    />
+                            <myc:IconButton ImagePath="{StaticResource pd_Goforward}" Margin="15,0,0,0"  ToolTip="下一个 D"  Click="btnNet_Click"  Style="{StaticResource myIconButtonStyle40}"     />
+                            <myc:IconButton ImagePath="{StaticResource pd_last_page}" Margin="15,0,0,0"  ToolTip="最后一个" Click="btnLast_Click"  Style="{StaticResource myIconButtonStyle40}"     />
+
+                            <myc:IconButton ImagePath="{StaticResource pd_delete}" Margin="15,0,0,0"  ToolTip="删除" Click="btnDelete_Click"  Style="{StaticResource myIconButtonStyle40}"     />
+
                         </StackPanel>
 
                         <Label FontSize="14" Foreground="{StaticResource ForegroundBrush}" Width="580" Grid.Column="2" Name="lblImageName" HorizontalContentAlignment="Right" />
