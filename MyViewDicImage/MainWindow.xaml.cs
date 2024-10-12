@@ -45,8 +45,7 @@ namespace MyViewDicImage
         private void openImage()
         {
           System.Windows.Forms.  OpenFileDialog opnDlg = new System.Windows.Forms.OpenFileDialog();
-            opnDlg.Filter = "所有图像文件 | *.bmp; *.pcx; *.png; *.jpg; *.gif;" +
-                "*.tif;*.tiff; *.ico; *.dxf; *.cgm; *.cdr; *.wmf; *.eps; *.emf";
+            opnDlg.Filter = "所有图像文件 | *.bmp; *.png; *.jpg; *.tif";
             opnDlg.Title = "打开图像文件";
             opnDlg.ShowHelp = false;
             opnDlg.Multiselect = false;
@@ -113,24 +112,16 @@ namespace MyViewDicImage
                 if (offLineTestImageNameList != null)
                     offLineTestImageNameList.Clear();
 
-                if (isNg)
-                {
-                    //可以根据筛选条件来过滤图像
-                    offLineTestImageNameList = System.IO.Directory.GetFiles(_imageDir, "*.*").
-                    Where(
-                    file => file.ToLower().EndsWith("NG.bmp")
-                    || file.ToLower().EndsWith("NG.tif")
-                    ).ToList();
-                }
-                else
-                {
+               
                     //可以根据筛选条件来过滤图像
                     offLineTestImageNameList = System.IO.Directory.GetFiles(_imageDir, "*.*").
                     Where(
                     file => file.ToLower().EndsWith(".bmp")
-                    || file.ToLower().EndsWith(".tif") || file.ToLower().EndsWith(".jpg") || file.ToLower().EndsWith(".png")
+                    || file.ToLower().EndsWith(".tif") 
+                    || file.ToLower().EndsWith(".jpg") 
+                    || file.ToLower().EndsWith(".png")
                     ).ToList();
-                }
+              
             }
 
             if (offLineTestImageNameList != null)
@@ -201,17 +192,24 @@ namespace MyViewDicImage
 
             if (!System.IO.File.Exists(imagePath))
                 return;
+
+            string imgShortName = imagePath.Substring(imagePath.LastIndexOf("\\") + 1);
+
             //读取图像
             HOperatorSet.ReadImage(out ho_ModelImage, imagePath);
             //显示图像
             myHWind.ViewController.clearList();
             myHWind.ViewController.addHoImage(ho_ModelImage);
 
-            string name = imagePath.Substring(imagePath.LastIndexOf("\\") + 1);
-            lblImageName.Content = name;
+            myHWind.setImageName(imgShortName);
+            nowImageName = imagePath;
+
+
             //第几张
             label_SerialNumber.Content = string.Format("【{0}/{1}】", nowIndex + 1, imagesNum);
-            nowImageName = imagePath;
+          
+
+
         
             string dicPath = imagePath.Replace(".tif", ".hdict").Replace(".bmp", ".hdict").Replace(".jpg", ".hdict").Replace(".png", ".hdict");           
             if(System.IO.File.Exists(dicPath))
@@ -244,12 +242,6 @@ namespace MyViewDicImage
                 return path + "目录不存在！";
             }
         }
-
-
-        bool isNg = false;
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            isNg = chkNG.IsChecked.GetValueOrDefault();
-        }
+     
     }
 }

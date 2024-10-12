@@ -132,7 +132,7 @@ namespace MyViewROI
                         grayValue = 0;
                     }
 
-                    toolStripStatusLabel1.Text = string.Format("GV : {0}    Corrdinate : [ {1} , {2} ]", grayValue.ToString(), row.D.ToString("0"), col.D.ToString("0"));
+                    toolStripStatusLabel1.Text = string.Format("GV : {0}    RC : [ {1} , {2} ]", grayValue.ToString(), row.D.ToString("0"), col.D.ToString("0"));
 
                   
                 }
@@ -258,6 +258,11 @@ namespace MyViewROI
             {
                 // MessageBox.Show(ex.Message);
             }
+        }
+
+        public void setImageName(string imgName)
+        {
+            lblImageName.Text = imgName;
         }
 
 
