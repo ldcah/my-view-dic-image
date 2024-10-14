@@ -378,7 +378,7 @@ namespace MyViewDicImage
             }
             catch (Exception ex)
             {
-
+                System.Console.WriteLine(ex.Message);
             }
 
 

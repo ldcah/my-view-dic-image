@@ -7,7 +7,7 @@
     <ProjectGuid>{64C25705-603D-460D-BE2E-7780AD06F68B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>MyViewDicImage</RootNamespace>
-    <AssemblyName>MyViewDicImage</AssemblyName>
+    <AssemblyName>MyHImage</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -36,7 +36,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>图片.ico</ApplicationIcon>
+    <ApplicationIcon>ldc.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="halcondotnetxl">
@@ -122,7 +122,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="图片.ico" />
+    <Resource Include="ldc.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
