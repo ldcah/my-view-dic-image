@@ -14,9 +14,9 @@
     </Style>
 
 
-    <Style  x:Key="myIconButtonStyle40" TargetType="{x:Type myc:IconButton}" >
-        <Setter Property="Width" Value="40"/>
-        <Setter Property="Height" Value="33"/>
+    <Style  x:Key="myBtStyle32" TargetType="{x:Type myc:IconButton}" >
+        <Setter Property="Width" Value="32"/>
+        <Setter Property="Height" Value="32"/>
         <Setter Property="Margin" Value="1,0,1,0"/>
 
         <Setter Property="Template">
@@ -66,9 +66,9 @@
     </Style>
 
 
-    <Style  x:Key="myIconButtonStyle30" TargetType="{x:Type myc:IconButton}" >
-        <Setter Property="Width" Value="23"/>
-        <Setter Property="Height" Value="23"/>
+    <Style  x:Key="myBtStyle20" TargetType="{x:Type myc:IconButton}" >
+        <Setter Property="Width" Value="20"/>
+        <Setter Property="Height" Value="20"/>
         <Setter Property="Margin" Value="1,0,1,0"/>
 
         <Setter Property="Template">
@@ -77,7 +77,7 @@
                 <ControlTemplate TargetType="{x:Type myc:IconButton}">
                     <Border  x:Name="border"    CornerRadius="3,3,3,3" BorderBrush="Transparent"  BorderThickness="1" Background="Transparent" >
                         <StackPanel   VerticalAlignment="Center"  Background="Transparent">
-                            <Path   Width="18" Height="18"  Fill="White" x:Name="bgrect" Data="{Binding ImagePath,RelativeSource={RelativeSource TemplatedParent} ,Converter={StaticResource converString2Path}}"     Stretch="Fill"></Path>
+                            <Path   Width="11" Height="11"  Fill="White" x:Name="bgrect" Data="{Binding ImagePath,RelativeSource={RelativeSource TemplatedParent} ,Converter={StaticResource converString2Path}}"     Stretch="Fill"></Path>
                         </StackPanel>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -90,8 +90,8 @@
 
 
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="border" Property="BorderBrush" Value="Transparent" />
-                            <Setter TargetName="bgrect" Property="Fill" Value="Gray" />
+                            <Setter TargetName="border" Property="BorderBrush" Value="#1296db" />
+                            <Setter TargetName="bgrect" Property="Fill" Value="White" />
                         </Trigger>
 
 

@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.hWindowControl1 = new HalconDotNet.HWindowControl();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.加载图片ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.图片另存为ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.打开文件位置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MoveAndZoomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MoveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NoActionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,9 +42,6 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4ROI = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblImageName = new System.Windows.Forms.ToolStripStatusLabel();
-            this.图片另存为ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.打开文件位置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.加载图片ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -73,11 +73,33 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(181, 180);
             // 
+            // 加载图片ToolStripMenuItem
+            // 
+            this.加载图片ToolStripMenuItem.Name = "加载图片ToolStripMenuItem";
+            this.加载图片ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.加载图片ToolStripMenuItem.Text = "图像-加载";
+            this.加载图片ToolStripMenuItem.Click += new System.EventHandler(this.加载图片ToolStripMenuItem_Click);
+            // 
+            // 图片另存为ToolStripMenuItem
+            // 
+            this.图片另存为ToolStripMenuItem.Name = "图片另存为ToolStripMenuItem";
+            this.图片另存为ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.图片另存为ToolStripMenuItem.Text = "图像-另存为...";
+            this.图片另存为ToolStripMenuItem.Click += new System.EventHandler(this.图片另存为ToolStripMenuItem_Click);
+            // 
+            // 打开文件位置ToolStripMenuItem
+            // 
+            this.打开文件位置ToolStripMenuItem.Name = "打开文件位置ToolStripMenuItem";
+            this.打开文件位置ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.打开文件位置ToolStripMenuItem.Text = "图像-所在位置";
+            this.打开文件位置ToolStripMenuItem.Click += new System.EventHandler(this.打开文件位置ToolStripMenuItem_Click);
+            // 
             // MoveAndZoomToolStripMenuItem
             // 
             this.MoveAndZoomToolStripMenuItem.Name = "MoveAndZoomToolStripMenuItem";
             this.MoveAndZoomToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.MoveAndZoomToolStripMenuItem.Text = "缩放+移动";
+            this.MoveAndZoomToolStripMenuItem.Visible = false;
             this.MoveAndZoomToolStripMenuItem.Click += new System.EventHandler(this.ZoomToolStripMenuItem_Click);
             // 
             // MoveToolStripMenuItem
@@ -142,27 +164,6 @@
             this.lblImageName.Size = new System.Drawing.Size(464, 20);
             this.lblImageName.Spring = true;
             this.lblImageName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // 图片另存为ToolStripMenuItem
-            // 
-            this.图片另存为ToolStripMenuItem.Name = "图片另存为ToolStripMenuItem";
-            this.图片另存为ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.图片另存为ToolStripMenuItem.Text = "图像-另存为...";
-            this.图片另存为ToolStripMenuItem.Click += new System.EventHandler(this.图片另存为ToolStripMenuItem_Click);
-            // 
-            // 打开文件位置ToolStripMenuItem
-            // 
-            this.打开文件位置ToolStripMenuItem.Name = "打开文件位置ToolStripMenuItem";
-            this.打开文件位置ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.打开文件位置ToolStripMenuItem.Text = "图像-所在位置";
-            this.打开文件位置ToolStripMenuItem.Click += new System.EventHandler(this.打开文件位置ToolStripMenuItem_Click);
-            // 
-            // 加载图片ToolStripMenuItem
-            // 
-            this.加载图片ToolStripMenuItem.Name = "加载图片ToolStripMenuItem";
-            this.加载图片ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.加载图片ToolStripMenuItem.Text = "图像-加载";
-            this.加载图片ToolStripMenuItem.Click += new System.EventHandler(this.加载图片ToolStripMenuItem_Click);
             // 
             // MyHalconWindow
             // 
