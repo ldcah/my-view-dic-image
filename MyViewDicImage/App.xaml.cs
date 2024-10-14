@@ -24,8 +24,6 @@ namespace MyViewDicImage
                 m.OnStartup(e.Args[0].Split('*'));
             }
 
-
-
             base.OnStartup(e);
         }
         public App()

@@ -489,6 +489,8 @@ namespace MyViewROI
 
         public void resetImage()
         {
+           
+
             SetPart();
             repaint();
         }
