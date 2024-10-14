@@ -501,10 +501,8 @@ namespace MyViewDicImage
             if (App.Current.MainWindow.WindowState == WindowState.Maximized)
                 return;
 
-            this.Left += e.HorizontalChange;
-            this.Top += e.VerticalChange;
-            this.Width -= e.HorizontalChange;
-            this.Height -= e.VerticalChange;
+            LeftThumb_DragDelta(sender, e);
+            TopThumb_DragDelta(sender, e);
         }
 
         // 窗体缩放 - 右上角缩放
@@ -512,9 +510,8 @@ namespace MyViewDicImage
         {
             if (App.Current.MainWindow.WindowState == WindowState.Maximized)
                 return;
-            this.Top += e.VerticalChange;
-            this.Width += e.HorizontalChange;
-            this.Height -= e.VerticalChange;
+            RightThumb_DragDelta(sender, e);
+            TopThumb_DragDelta(sender, e);
         }
 
         // 窗体缩放 - 左下角缩放
@@ -522,9 +519,8 @@ namespace MyViewDicImage
         {
             if (App.Current.MainWindow.WindowState == WindowState.Maximized)
                 return;
-            this.Left += e.HorizontalChange;
-            this.Width -= e.HorizontalChange;
-            this.Height += e.VerticalChange;
+            LeftThumb_DragDelta(sender, e);
+            BottomThumb_DragDelta(sender, e);
         }
 
         // 窗体缩放 - 右下角缩放
@@ -532,8 +528,11 @@ namespace MyViewDicImage
         {
             if (App.Current.MainWindow.WindowState == WindowState.Maximized)
                 return;
-            this.Width += e.HorizontalChange;
-            this.Height += e.VerticalChange;
+
+
+            RightThumb_DragDelta(sender, e);
+            BottomThumb_DragDelta(sender, e);
+
         }
 
         // 窗体缩放 - 左边缩放
@@ -541,26 +540,39 @@ namespace MyViewDicImage
         {
             if (App.Current.MainWindow.WindowState == WindowState.Maximized)
                 return;
-            this.Left += e.HorizontalChange;
-            this.Width -= e.HorizontalChange;
+            double newWidth = this.Width - e.HorizontalChange;
+            if (newWidth > this.MinWidth)
+            {
+                this.Left += e.HorizontalChange; // 移动窗口左边缘
+                this.Width = newWidth;
+            }
         }
 
         // 窗体缩放 - 右边缩放
         private void RightThumb_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
         {
             if (App.Current.MainWindow.WindowState == WindowState.Maximized)
-                return;
-            this.Width += e.HorizontalChange;
+                return;            
+            double newWidth = this.Width + e.HorizontalChange;
+            if (newWidth > this.MinWidth)
+            {
+                this.Width = newWidth;
+            }
         }
+
 
         // 窗体缩放 - 上边缩放
         private void TopThumb_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
         {
             if (App.Current.MainWindow.WindowState == WindowState.Maximized)
                 return;
-            
-            this.Top += e.VerticalChange;
-            this.Height -= e.VerticalChange;
+
+            double newHeight = this.Height - e.VerticalChange;
+            if (newHeight > this.MinHeight)
+            {
+                this.Top += e.VerticalChange; // 移动窗口上边缘
+                this.Height = newHeight;
+            }
         }
 
         // 窗体缩放 - 下边缩放
@@ -568,7 +580,11 @@ namespace MyViewDicImage
         {
             if (App.Current.MainWindow.WindowState == WindowState.Maximized)
                 return;
-            this.Height += e.VerticalChange;
+            double newHeight = this.Height + e.VerticalChange;
+            if (newHeight > this.MinHeight)
+            {
+                this.Height = newHeight;
+            }
         }
 
         // 设置鼠标光标 - 各方向的缩放图标
