@@ -37,7 +37,7 @@ namespace MyViewDicImage
         public MainWindow()
         {
             InitializeComponent();
-            windowsFormsHost1.Child = myHWind; 
+            windowsFormsHost1.Child = myHWind;
 
             this.Loaded += MainWindow_Loaded;
         }
@@ -60,18 +60,18 @@ namespace MyViewDicImage
         }
         void doMyAction(MyViewROI.MyAction _action)
         {
-            switch(_action)
+            switch (_action)
             {
                 case MyViewROI.MyAction.ImgLoad:
-                    btnOpenImage_Click(null,null);
+                    btnOpenImage_Click(null, null);
                     break;
                 case MyViewROI.MyAction.ImgSaveAs:
-                    btnSaveAs_Click(null,null);
+                    btnSaveAs_Click(null, null);
                     break;
                 case MyViewROI.MyAction.ImgLocation:
-                    btnOpenDir_Click(null,null);
+                    btnOpenDir_Click(null, null);
                     break;
-            }    
+            }
         }
         void showGray(string str)
         {
@@ -103,7 +103,7 @@ namespace MyViewDicImage
             }
         }
 
-    
+
         private void MenuMaximized_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             if (App.Current.MainWindow.WindowState != WindowState.Maximized)
@@ -136,10 +136,10 @@ namespace MyViewDicImage
         {
             openImage();
         }
- 
+
         private void openImage()
         {
-          System.Windows.Forms.  OpenFileDialog opnDlg = new System.Windows.Forms.OpenFileDialog();
+            System.Windows.Forms.OpenFileDialog opnDlg = new System.Windows.Forms.OpenFileDialog();
             opnDlg.Filter = "所有图像文件 | *.bmp; *.png; *.jpg; *.tif";
             opnDlg.Title = "打开图像文件";
             opnDlg.ShowHelp = false;
@@ -152,7 +152,7 @@ namespace MyViewDicImage
 
         private void loadImage(string nowSelImagePath)
         {
-           
+
             _loadImgDir = nowSelImagePath.Substring(0, nowSelImagePath.LastIndexOf("\\"));
             openImagePath(_loadImgDir, nowSelImagePath);
         }
@@ -173,7 +173,7 @@ namespace MyViewDicImage
         }
         void doPreImage()
         {
-            btnPre_Click(null,null);
+            btnPre_Click(null, null);
         }
 
         void doNetImage()
@@ -195,11 +195,11 @@ namespace MyViewDicImage
             openImagePath(m_Dialog.SelectedPath.Trim());
         }
 
-        private void openImagePath(string _imageDir,string img="")
+        private void openImagePath(string _imageDir, string img = "")
         {
             imagesNum = 0;
             nowIndex = -1;
-            nowImageName = "";            
+            nowImageName = "";
             if (System.IO.Directory.Exists(_imageDir))
             {
                 System.IO.DirectoryInfo dirInfo = new System.IO.DirectoryInfo(_imageDir);
@@ -207,16 +207,16 @@ namespace MyViewDicImage
                 if (offLineTestImageNameList != null)
                     offLineTestImageNameList.Clear();
 
-               
-                    //可以根据筛选条件来过滤图像
-                    offLineTestImageNameList = System.IO.Directory.GetFiles(_imageDir, "*.*").
-                    Where(
-                    file => file.ToLower().EndsWith(".bmp")
-                    || file.ToLower().EndsWith(".tif") 
-                    || file.ToLower().EndsWith(".jpg") 
-                    || file.ToLower().EndsWith(".png")
-                    ).ToList();
-              
+
+                //可以根据筛选条件来过滤图像
+                offLineTestImageNameList = System.IO.Directory.GetFiles(_imageDir, "*.*").
+                Where(
+                file => file.ToLower().EndsWith(".bmp")
+                || file.ToLower().EndsWith(".tif")
+                || file.ToLower().EndsWith(".jpg")
+                || file.ToLower().EndsWith(".png")
+                ).ToList();
+
             }
 
             if (offLineTestImageNameList != null)
@@ -232,10 +232,10 @@ namespace MyViewDicImage
             }
             else
             {
-                label_SerialNumber.Content = string.Format("【0/{0}】",  imagesNum);
+                label_SerialNumber.Content = string.Format("【0/{0}】", imagesNum);
             }
 
-           
+
         }
 
         private void btnFirst_Click(object sender, RoutedEventArgs e)
@@ -291,7 +291,7 @@ namespace MyViewDicImage
             if (!System.IO.File.Exists(imagePath))
                 return;
 
-             imgShortName = imagePath.Substring(imagePath.LastIndexOf("\\") + 1);
+            imgShortName = imagePath.Substring(imagePath.LastIndexOf("\\") + 1);
             imageSrcPath = imagePath;
 
             //读取图像
@@ -306,59 +306,56 @@ namespace MyViewDicImage
 
             //第几张
             label_SerialNumber.Content = string.Format("【{0}/{1}】", nowIndex + 1, imagesNum);
-          
 
 
-        
-            string dicPath = imagePath.Replace(".tif", ".hdict").Replace(".bmp", ".hdict").Replace(".jpg", ".hdict").Replace(".png", ".hdict");           
-            if(System.IO.File.Exists(dicPath))
+
+
+            string dicPath = imagePath.Replace(".tif", ".hdict").Replace(".bmp", ".hdict").Replace(".jpg", ".hdict").Replace(".png", ".hdict");
+            if (System.IO.File.Exists(dicPath))
                 myHWind.loadOutDic(dicPath);
 
         }
-   
+
         private void btnOpenDir_Click(object sender, RoutedEventArgs e)
         {
             Open(imageSrcPath);
         }
 
-        public  string Open(string path)
+        public string Open(string path)
         {
 
-            if(File.Exists(path))
+            if (File.Exists(path))
             {
 
-               
-                    // 打开资源管理器，并选中指定文件
-                    Process.Start("explorer.exe", $"/select,\"{path}\"");
+
+                // 打开资源管理器，并选中指定文件
+                Process.Start("explorer.exe", $"/select,\"{path}\"");
                 OpenFolderAndSelectFile(path);
                 return "";
             }
             else
-            { 
-            path = path.TrimEnd('\\');
-            if (System.IO.Directory.Exists(path))
             {
-                try
+                path = path.TrimEnd('\\');
+                if (System.IO.Directory.Exists(path))
                 {
-                    System.Diagnostics.Process.Start("explorer.exe", path);
-                    return "";
+                    try
+                    {
+                        System.Diagnostics.Process.Start("explorer.exe", path);
+                        return "";
+                    }
+                    catch (Exception ex)
+                    {
+                        return "打开" + path + "异常:" + ex.Message;
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    return "打开" + path + "异常:" + ex.Message;
+                    return path + "目录不存在！";
                 }
-            }
-            else
-            {
-                return path + "目录不存在！";
-            }
             }
         }
 
-        private void miClose_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+     
 
         private void btnSaveAs_Click(object sender, RoutedEventArgs e)
         {
@@ -379,12 +376,12 @@ namespace MyViewDicImage
             {
                 System.IO.File.Copy(imageSrcPath, m_Dialog.FileName);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
 
-           
+
         }
 
 
@@ -423,7 +420,7 @@ namespace MyViewDicImage
 
         private void _doRectangleDoubleClick(object sender)
         {
-            MenuMaximized_MouseLeftButtonUp(null,null);
+            MenuMaximized_MouseLeftButtonUp(null, null);
         }
 
         public void OpenFolderAndSelectFile(string filePath)
@@ -443,8 +440,8 @@ namespace MyViewDicImage
         {
             if (offLineTestImageNameList.Count < 1)
                 return;
-            
-            if(MessageBox.Show("是否确定要删除此文件 ?","删除此文件", MessageBoxButton.YesNo)== MessageBoxResult.Yes)
+
+            if (MessageBox.Show("是否确定要删除此文件 ?", "删除此文件", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 try
                 {
@@ -458,7 +455,7 @@ namespace MyViewDicImage
                 offLineTestImageNameList.Remove(imageSrcPath);
 
 
-                if (offLineTestImageNameList.Count==0)
+                if (offLineTestImageNameList.Count == 0)
                 {
                     myHWind.ViewController.clearList();
                     myHWind.ViewController.repaint();
@@ -469,18 +466,18 @@ namespace MyViewDicImage
                     return;
                 }
 
-               
+
 
                 imagesNum = offLineTestImageNameList.Count;
 
 
-                if (nowIndex< offLineTestImageNameList.Count())
+                if (nowIndex < offLineTestImageNameList.Count())
                 {
-                   
-                        loadTestImage(offLineTestImageNameList[nowIndex]);
-                    
+
+                    loadTestImage(offLineTestImageNameList[nowIndex]);
+
                 }
-                else 
+                else
                 {
                     nowIndex = nowIndex - 1;
                     loadTestImage(offLineTestImageNameList[nowIndex]);
@@ -488,5 +485,154 @@ namespace MyViewDicImage
 
             }
         }
+
+        // 窗体拖动
+        private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == System.Windows.Input.MouseButtonState.Pressed)
+            {
+                this.DragMove();  // 实现窗口拖动
+            }
+        }
+
+        // 窗体缩放 - 各种方向的 DragDelta 事件
+        private void TopLeftThumb_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
+        {
+            if (App.Current.MainWindow.WindowState == WindowState.Maximized)
+                return;
+
+            this.Left += e.HorizontalChange;
+            this.Top += e.VerticalChange;
+            this.Width -= e.HorizontalChange;
+            this.Height -= e.VerticalChange;
+        }
+
+        // 窗体缩放 - 右上角缩放
+        private void TopRightThumb_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
+        {
+            if (App.Current.MainWindow.WindowState == WindowState.Maximized)
+                return;
+            this.Top += e.VerticalChange;
+            this.Width += e.HorizontalChange;
+            this.Height -= e.VerticalChange;
+        }
+
+        // 窗体缩放 - 左下角缩放
+        private void BottomLeftThumb_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
+        {
+            if (App.Current.MainWindow.WindowState == WindowState.Maximized)
+                return;
+            this.Left += e.HorizontalChange;
+            this.Width -= e.HorizontalChange;
+            this.Height += e.VerticalChange;
+        }
+
+        // 窗体缩放 - 右下角缩放
+        private void BottomRightThumb_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
+        {
+            if (App.Current.MainWindow.WindowState == WindowState.Maximized)
+                return;
+            this.Width += e.HorizontalChange;
+            this.Height += e.VerticalChange;
+        }
+
+        // 窗体缩放 - 左边缩放
+        private void LeftThumb_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
+        {
+            if (App.Current.MainWindow.WindowState == WindowState.Maximized)
+                return;
+            this.Left += e.HorizontalChange;
+            this.Width -= e.HorizontalChange;
+        }
+
+        // 窗体缩放 - 右边缩放
+        private void RightThumb_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
+        {
+            if (App.Current.MainWindow.WindowState == WindowState.Maximized)
+                return;
+            this.Width += e.HorizontalChange;
+        }
+
+        // 窗体缩放 - 上边缩放
+        private void TopThumb_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
+        {
+            if (App.Current.MainWindow.WindowState == WindowState.Maximized)
+                return;
+            
+            this.Top += e.VerticalChange;
+            this.Height -= e.VerticalChange;
+        }
+
+        // 窗体缩放 - 下边缩放
+        private void BottomThumb_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
+        {
+            if (App.Current.MainWindow.WindowState == WindowState.Maximized)
+                return;
+            this.Height += e.VerticalChange;
+        }
+
+        // 设置鼠标光标 - 各方向的缩放图标
+        private void TopLeftThumb_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            if (App.Current.MainWindow.WindowState == WindowState.Maximized)
+                return;
+            Mouse.OverrideCursor = Cursors.SizeNWSE; // 左上角：↘↖
+        }
+
+        private void TopRightThumb_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            if (App.Current.MainWindow.WindowState == WindowState.Maximized)
+                return;
+            Mouse.OverrideCursor = Cursors.SizeNESW; // 右上角：↙↗
+        }
+
+        private void BottomLeftThumb_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            if (App.Current.MainWindow.WindowState == WindowState.Maximized)
+                return;
+            Mouse.OverrideCursor = Cursors.SizeNESW; // 左下角：↗↙
+        }
+
+        private void BottomRightThumb_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            if (App.Current.MainWindow.WindowState == WindowState.Maximized)
+                return;
+            Mouse.OverrideCursor = Cursors.SizeNWSE; // 右下角：↖↘
+        }
+
+        private void LeftThumb_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            if (App.Current.MainWindow.WindowState == WindowState.Maximized)
+                return;
+            Mouse.OverrideCursor = Cursors.SizeWE; // 左边：↔
+        }
+
+        private void RightThumb_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            if (App.Current.MainWindow.WindowState == WindowState.Maximized)
+                return;
+            Mouse.OverrideCursor = Cursors.SizeWE; // 右边：↔
+        }
+
+        private void TopThumb_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            if (App.Current.MainWindow.WindowState == WindowState.Maximized)
+                return;
+            Mouse.OverrideCursor = Cursors.SizeNS; // 上边：↕
+        }
+
+        private void BottomThumb_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            if (App.Current.MainWindow.WindowState == WindowState.Maximized)
+                return;
+            Mouse.OverrideCursor = Cursors.SizeNS; // 下边：↕
+        }
+
+        // 鼠标离开时恢复默认光标
+        private void Thumb_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            Mouse.OverrideCursor = null;
+        }
+
     }
 }

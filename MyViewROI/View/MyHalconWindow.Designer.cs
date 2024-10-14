@@ -147,21 +147,21 @@
             // 
             this.图片另存为ToolStripMenuItem.Name = "图片另存为ToolStripMenuItem";
             this.图片另存为ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.图片另存为ToolStripMenuItem.Text = "图片另存为...";
+            this.图片另存为ToolStripMenuItem.Text = "图像-另存为...";
             this.图片另存为ToolStripMenuItem.Click += new System.EventHandler(this.图片另存为ToolStripMenuItem_Click);
             // 
             // 打开文件位置ToolStripMenuItem
             // 
             this.打开文件位置ToolStripMenuItem.Name = "打开文件位置ToolStripMenuItem";
             this.打开文件位置ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.打开文件位置ToolStripMenuItem.Text = "打开文件位置";
+            this.打开文件位置ToolStripMenuItem.Text = "图像-所在位置";
             this.打开文件位置ToolStripMenuItem.Click += new System.EventHandler(this.打开文件位置ToolStripMenuItem_Click);
             // 
             // 加载图片ToolStripMenuItem
             // 
             this.加载图片ToolStripMenuItem.Name = "加载图片ToolStripMenuItem";
             this.加载图片ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.加载图片ToolStripMenuItem.Text = "加载图片";
+            this.加载图片ToolStripMenuItem.Text = "图像-加载";
             this.加载图片ToolStripMenuItem.Click += new System.EventHandler(this.加载图片ToolStripMenuItem_Click);
             // 
             // MyHalconWindow
