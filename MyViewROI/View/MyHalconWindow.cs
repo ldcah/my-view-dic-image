@@ -149,7 +149,7 @@ namespace MyViewROI
                 }
                 catch (Exception ex)
                 {
-                 
+                    System.Console.WriteLine(ex.Message);
                 }
             }
             else
@@ -201,7 +201,7 @@ namespace MyViewROI
                     }
                     catch (Exception ex)
                     {
-
+                    System.Console.WriteLine(ex.Message);
                     }
                 }
            
@@ -240,7 +240,7 @@ namespace MyViewROI
                         }
                         catch (Exception ex)
                         {
-
+                            System.Console.WriteLine(ex.Message);
                         }
 
                     }
@@ -260,14 +260,14 @@ namespace MyViewROI
                         }
                         catch (Exception ex)
                         {
-
+                            System.Console.WriteLine(ex.Message);
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                // MessageBox.Show(ex.Message);
+                System.Console.WriteLine(ex.Message);
             }
         }
 
