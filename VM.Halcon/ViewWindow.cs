@@ -13,26 +13,30 @@ namespace VM.Halcon
 {
     public class ViewWindow : IViewWindow
     {
+
+
+        public void clearList()
+        {
+            ClearWindow();
+        }
+
+        public void repaint()
+        {
+            _hWndControl.Repaint();
+        }
+
         public void addtxt(HTuple msg, HTuple row, HTuple col, string setColor = "red", string setFont = "宋体-16")
         {
-            //HText entry = new HText(msg, mGC.copyContextList(), row, col, setColor: setColor, font: setFont);
-
             HText entry = new HText(setColor,msg,  row, col, 16,  setFont);
             DispText(entry);
-            //repaint();
+           
         }
 
         public void addIconicVar(HObject obj, string setColor = "red", string setDraw = "margin")
         {
-
             if (obj == null)
                 return;
-
             _hWndControl.DispObj(obj, setColor, setDraw== "fill");
-
-           // HObjectEntry entry = new HObjectEntry(obj, mGC.copyContextList(), setColor: setColor, setDraw: setDraw);
-           //// HObjList.Add(entry);
-           
         }
 
 

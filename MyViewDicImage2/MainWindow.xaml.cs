@@ -298,10 +298,6 @@ namespace MyViewDicImage
 
             //读取图像
             HOperatorSet.ReadImage(out ho_ModelImage, imagePath);
-            ////显示图像
-            //myHWind.ViewController.clearList();
-            //myHWind.ViewController.addHoImage(ho_ModelImage);
-
             myHWind.HobjectToHimage(ho_ModelImage);
 
             nowImageName = imagePath;
@@ -457,12 +453,12 @@ namespace MyViewDicImage
                     return;
                 }
                 offLineTestImageNameList.Remove(imageSrcPath);
-
+                imagesNum = offLineTestImageNameList.Count;
 
                 if (offLineTestImageNameList.Count == 0)
                 {
-                    //myHWind.ViewController.clearList();
-                    //myHWind.ViewController.repaint();
+                    myHWind.ViewController.ClearWindow();
+                    myHWind.ViewController.repaint();
 
                     nowIndex = 0;
                     label_SerialNumber.Content = "";
@@ -470,11 +466,6 @@ namespace MyViewDicImage
                     imgShortName = "";
                     return;
                 }
-
-
-
-                imagesNum = offLineTestImageNameList.Count;
-
 
                 if (nowIndex < offLineTestImageNameList.Count())
                 {
