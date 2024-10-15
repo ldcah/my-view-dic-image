@@ -1,0 +1,147 @@
+﻿<Window x:Class="MyViewDicImage.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyViewDicImage"
+        xmlns:myc="clr-namespace:MyWpfControl;assembly=MyWpfControl"  
+        mc:Ignorable="d"
+        Background="{StaticResource BackgroundBrush}" Foreground="{StaticResource ForegroundBrush}"
+        Title="【图像查看器】"  Height="900" Width="1440" WindowStartupLocation="CenterScreen" WindowStyle="None" WindowState="Normal"  ResizeMode="NoResize">
+
+
+
+
+
+    <Viewbox Stretch="Fill">
+
+        <!--<Border BorderBrush="{StaticResource BackgroundBrush}">-->
+        <Grid x:Name="GdRoot">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="248*"/>
+                <RowDefinition Height="208*"/>
+                <RowDefinition Height="208*"/>
+                <RowDefinition Height="26*"/>
+                <RowDefinition Height="201*"/>
+            </Grid.RowDefinitions>
+            <!--<Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+               
+
+
+                <Grid Grid.Row="1"  x:Name="GdContent"  >
+                   
+                       </Grid>-->
+
+
+
+            <!-- 顶部区域用于拖动窗口 -->
+            <Border Background="DarkSlateGray" Height="40" VerticalAlignment="Top" MouseDown="Border_MouseDown">
+                <Grid x:Name="GdHeader"  Background="{StaticResource BackgroundBrush}">
+                    <Rectangle x:Name="RectHeader" Fill="Transparent"/>
+                    <StackPanel  VerticalAlignment="Center" Orientation="Horizontal" >
+                        <StackPanel  Orientation="Horizontal"    >
+                            <!--菜单栏-->
+                            <Menu   Name="MainMenu" FontSize="14"   Background="{StaticResource BackgroundBrush}"   >
+                                <MenuItem Header="文件" Click="btnOpenImage_Click"   Background="{StaticResource BackgroundBrush}" Foreground="{StaticResource ForegroundBrush}" >
+                                </MenuItem>
+
+                            </Menu>
+                        </StackPanel>
+                    </StackPanel>
+
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  VerticalAlignment="Top">
+
+                        <myc:IconButton Margin="5,10,20,0" x:Name="MenuMinimized"   ToolTip="最小化"   ImagePath="{StaticResource PathData.Min}"   Style="{StaticResource myBtStyle20}"/>
+                        <myc:IconButton Margin="5,10,20,0" x:Name="MenuMaximized"  ToolTip="最大化" ImagePath="{StaticResource PathData.Max}"    Style="{StaticResource myBtStyle20}"/>
+                        <myc:IconButton Margin="5,10,20,0" x:Name="MenuShutdown"  ToolTip="关闭"  ImagePath="{StaticResource PathData.Close}"   Style="{StaticResource myBtStyle20}"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- 窗口内容 -->
+            <Border Background="{DynamicResource BackgroundBrush}" Margin="0,40,0,0" Grid.RowSpan="5">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="163*"/>
+                        <RowDefinition Height="242*"/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+                    <WindowsFormsHost Margin="4,0,4,0"  Background="Black" Width="1430" Height="810" HorizontalAlignment="Left"  Name="windowsFormsHost1" VerticalAlignment="Top" Grid.RowSpan="2"   />
+
+                    <StatusBar Grid.Row="2" Background="{StaticResource BackgroundBrush}" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="600"/>
+                                <ColumnDefinition Width="440" />
+                                <ColumnDefinition Width="380"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label FontSize="16"  Name="lblGray" Foreground="{StaticResource ForegroundBrush}" />
+
+                            <StackPanel  Orientation="Horizontal" Grid.Column="1"  HorizontalAlignment="Left"   >
+                              
+                                <myc:IconButton  ImagePath="{StaticResource pd_first_page}" Margin="10,0,0,0"   ToolTip="第一个"  Click="btnFirst_Click"   Style="{StaticResource myBtStyle32}"      />
+                                <myc:IconButton ImagePath="{StaticResource pd_GoBack}" Margin="15,0,0,0"  ToolTip="上一个 A" Click="btnPre_Click"  Style="{StaticResource myBtStyle32}"    />
+                                <myc:IconButton ImagePath="{StaticResource pd_Goforward}" Margin="15,0,0,0"  ToolTip="下一个 D"  Click="btnNet_Click"  Style="{StaticResource myBtStyle32}"     />
+                                <myc:IconButton ImagePath="{StaticResource pd_last_page}" Margin="15,0,0,0"  ToolTip="最后一个" Click="btnLast_Click"  Style="{StaticResource myBtStyle32}"     />
+
+                                <myc:IconButton ImagePath="{StaticResource pd_delete}" Margin="15,0,0,0"  ToolTip="删除" Click="btnDelete_Click"  Style="{StaticResource myBtStyle32}"     />
+                                <Label Foreground="{StaticResource ForegroundBrush}"   Width="150" HorizontalContentAlignment="Center" FontSize="18"   x:Name="label_SerialNumber" Content="【0/0】"   HorizontalAlignment="Left"  VerticalAlignment="Top"  IsEnabled="False"/>
+
+                            </StackPanel>
+
+                            <Label FontSize="14" Foreground="{StaticResource ForegroundBrush}" Width="380" Grid.Column="2" Name="lblImageName" HorizontalContentAlignment="Right" />
+                        </Grid>
+                    </StatusBar>
+
+                </Grid>
+
+                <!-- 其他内容 -->
+            </Border>
+
+
+
+            <!-- 边缘和角落的缩放控件 -->
+            <!-- 左上角 -->
+            <Thumb BorderBrush="Transparent" BorderThickness="10"   Margin="0,0,0,0" Width="20" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" DragDelta="TopLeftThumb_DragDelta"
+               MouseEnter="TopLeftThumb_MouseEnter" MouseLeave="Thumb_MouseLeave"/>
+
+            <!-- 右上角 -->
+            <Thumb BorderBrush="Transparent" BorderThickness="10" Width="20" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top" DragDelta="TopRightThumb_DragDelta"
+               MouseEnter="TopRightThumb_MouseEnter" MouseLeave="Thumb_MouseLeave"/>
+
+            <!-- 左下角 -->
+            <Thumb BorderBrush="Transparent" BorderThickness="10" Width="20" Height="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" DragDelta="BottomLeftThumb_DragDelta"
+               MouseEnter="BottomLeftThumb_MouseEnter" MouseLeave="Thumb_MouseLeave" Grid.Row="4" Margin="0,0,0,0"/>
+
+            <!-- 右下角 -->
+            <Thumb BorderBrush="Transparent" BorderThickness="10" Width="20" Height="20" HorizontalAlignment="Right" VerticalAlignment="Bottom" DragDelta="BottomRightThumb_DragDelta"
+               MouseEnter="BottomRightThumb_MouseEnter" MouseLeave="Thumb_MouseLeave" Grid.Row="4" Margin="0,0,0,0"/>
+
+            <!-- 左边 -->
+            <Thumb BorderBrush="Transparent" BorderThickness="5" Width="10" Height="Auto" Margin="0,40,0,40" HorizontalAlignment="Left" VerticalAlignment="Stretch" DragDelta="LeftThumb_DragDelta"
+               MouseEnter="LeftThumb_MouseEnter" MouseLeave="Thumb_MouseLeave" Grid.RowSpan="5"/>
+
+            <!-- 右边 -->
+            <Thumb BorderBrush="Transparent" BorderThickness="5" Width="10" Height="Auto" Margin="0,40,0,40" HorizontalAlignment="Right" VerticalAlignment="Stretch" DragDelta="RightThumb_DragDelta"
+               MouseEnter="RightThumb_MouseEnter" MouseLeave="Thumb_MouseLeave" Grid.RowSpan="5"/>
+
+            <!-- 上边 -->
+            <Thumb  BorderBrush="Transparent" BorderThickness="5"     Margin="20,0,20,0" Width="Auto" Height="10" HorizontalAlignment="Stretch" VerticalAlignment="Top" DragDelta="TopThumb_DragDelta"
+               MouseEnter="TopThumb_MouseEnter" MouseLeave="Thumb_MouseLeave"/>
+
+            <!-- 下边 -->
+            <Thumb BorderBrush="Transparent" BorderThickness="5"     Margin="20,0,20,0" Width="Auto" Height="10" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" DragDelta="BottomThumb_DragDelta"
+               MouseEnter="BottomThumb_MouseEnter" MouseLeave="Thumb_MouseLeave" Grid.Row="4"/>
+
+        </Grid>
+
+        <!--</Border>-->
+    </Viewbox>
+</Window>
+
