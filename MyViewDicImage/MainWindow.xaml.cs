@@ -7,6 +7,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
+using VM.Halcon;
 
 namespace MyViewDicImage
 {
@@ -16,7 +17,8 @@ namespace MyViewDicImage
     public partial class MainWindow : Window
     {
         HObject ho_ModelImage;
-        MyViewROI.MyHalconWindow myHWind = new MyViewROI.MyHalconWindow();
+
+        VM.Halcon.VMHWindowControl myHWind = new VM.Halcon.VMHWindowControl();
         string _loadImgDir = "";
 
 
@@ -58,17 +60,17 @@ namespace MyViewDicImage
 
             moniDoubleClick();
         }
-        void doMyAction(MyViewROI.MyAction _action)
+        void doMyAction(VM.Halcon.MyAction _action)
         {
             switch (_action)
             {
-                case MyViewROI.MyAction.ImgLoad:
+                case MyAction.ImgLoad:
                     btnOpenImage_Click(null, null);
                     break;
-                case MyViewROI.MyAction.ImgSaveAs:
+                case MyAction.ImgSaveAs:
                     btnSaveAs_Click(null, null);
                     break;
-                case MyViewROI.MyAction.ImgLocation:
+                case MyAction.ImgLocation:
                     btnOpenDir_Click(null, null);
                     break;
             }
@@ -296,9 +298,7 @@ namespace MyViewDicImage
 
             //读取图像
             HOperatorSet.ReadImage(out ho_ModelImage, imagePath);
-            //显示图像
-            myHWind.ViewController.clearList();
-            myHWind.ViewController.addHoImage(ho_ModelImage);
+            myHWind.HobjectToHimage(ho_ModelImage);
 
             nowImageName = imagePath;
 
@@ -453,23 +453,19 @@ namespace MyViewDicImage
                     return;
                 }
                 offLineTestImageNameList.Remove(imageSrcPath);
-
+                imagesNum = offLineTestImageNameList.Count;
 
                 if (offLineTestImageNameList.Count == 0)
                 {
-                    myHWind.ViewController.clearList();
+                    myHWind.ViewController.ClearWindow();
                     myHWind.ViewController.repaint();
+
                     nowIndex = 0;
                     label_SerialNumber.Content = "";
                     imageSrcPath = "";
                     imgShortName = "";
                     return;
                 }
-
-
-
-                imagesNum = offLineTestImageNameList.Count;
-
 
                 if (nowIndex < offLineTestImageNameList.Count())
                 {

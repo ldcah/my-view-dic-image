@@ -39,14 +39,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_440CFB95DB88487597DCDCDC541BE74A"
+        "MsmKey" = "8:_49690874DBF1407CA9C1834A349E77CD"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_49690874DBF1407CA9C1834A349E77CD"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_62F15C8D8B48D207BABDF954182075F1"
+        "OwnerKey" = "8:_669D04396ECB45B7AF43227234E4774A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -57,13 +57,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_922C2E1D672B6B443D03C77F3B562753"
-        "OwnerKey" = "8:_440CFB95DB88487597DCDCDC541BE74A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_922C2E1D672B6B443D03C77F3B562753"
+        "MsmKey" = "8:_B6EB64743B00F32426FF30A56F2B411B"
         "OwnerKey" = "8:_669D04396ECB45B7AF43227234E4774A"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -75,18 +69,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_DAE129DD979B80DB5D4E1413564B5C8B"
-        "OwnerKey" = "8:_440CFB95DB88487597DCDCDC541BE74A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_DAE129DD979B80DB5D4E1413564B5C8B"
-        "OwnerKey" = "8:_669D04396ECB45B7AF43227234E4774A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_EC8C891E5017BD68276AB2588E79892F"
         "OwnerKey" = "8:_669D04396ECB45B7AF43227234E4774A"
         "MsmSig" = "8:_UNDEFINED"
@@ -94,13 +76,7 @@
         "Entry"
         {
         "MsmKey" = "8:_EC8C891E5017BD68276AB2588E79892F"
-        "OwnerKey" = "8:_DAE129DD979B80DB5D4E1413564B5C8B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EC8C891E5017BD68276AB2588E79892F"
-        "OwnerKey" = "8:_440CFB95DB88487597DCDCDC541BE74A"
+        "OwnerKey" = "8:_B6EB64743B00F32426FF30A56F2B411B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -112,19 +88,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DAE129DD979B80DB5D4E1413564B5C8B"
+        "OwnerKey" = "8:_B6EB64743B00F32426FF30A56F2B411B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_440CFB95DB88487597DCDCDC541BE74A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_922C2E1D672B6B443D03C77F3B562753"
+        "OwnerKey" = "8:_62F15C8D8B48D207BABDF954182075F1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -151,6 +121,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -167,6 +153,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -296,6 +298,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_62F15C8D8B48D207BABDF954182075F1"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:MyWpfControl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_62F15C8D8B48D207BABDF954182075F1"
+                    {
+                    "Name" = "8:MyWpfControl.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:MyWpfControl.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_287BED4DCA9C4AA9858D68E5053E4227"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_669D04396ECB45B7AF43227234E4774A"
             {
             "AssemblyRegister" = "3:1"
@@ -327,20 +360,20 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_922C2E1D672B6B443D03C77F3B562753"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B6EB64743B00F32426FF30A56F2B411B"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MyWpfControl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:VM.Halcon, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_922C2E1D672B6B443D03C77F3B562753"
+                    "_B6EB64743B00F32426FF30A56F2B411B"
                     {
-                    "Name" = "8:MyWpfControl.dll"
+                    "Name" = "8:VM.Halcon.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:MyWpfControl.dll"
+            "SourcePath" = "8:VM.Halcon.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_287BED4DCA9C4AA9858D68E5053E4227"
@@ -376,37 +409,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DAE129DD979B80DB5D4E1413564B5C8B"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MyViewROI, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_DAE129DD979B80DB5D4E1413564B5C8B"
-                    {
-                    "Name" = "8:MyViewROI.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:MyViewROI.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_287BED4DCA9C4AA9858D68E5053E4227"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EC8C891E5017BD68276AB2588E79892F"
@@ -508,7 +510,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:MyHImage"
         "ProductCode" = "8:{B54D923E-B627-4E6C-9F4D-B2CC602A1879}"
-        "PackageCode" = "8:{05011BF1-ECF6-41F1-AB97-03EC394CC693}"
+        "PackageCode" = "8:{986F5C6B-4D65-487F-BF3A-86FDD4EDAC92}"
         "UpgradeCode" = "8:{9E8D4126-B172-40F4-AB45-51E390E91B54}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
@@ -628,7 +630,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_4CF2C8C30BC949059A2C367C2717C321"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_C3AE5F65E0E74809B66FF903B7AE6CFC"
             {
             "Name" = "8:MyHImage"
             "Arguments" = "8:"
@@ -636,13 +638,13 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_440CFB95DB88487597DCDCDC541BE74A"
+            "Target" = "8:_669D04396ECB45B7AF43227234E4774A"
             "Folder" = "8:_3FAC7DD6E0DB42EA99D058B734E9B3C2"
             "WorkingFolder" = "8:_287BED4DCA9C4AA9858D68E5053E4227"
             "Icon" = "8:_49690874DBF1407CA9C1834A349E77CD"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E7BCC15207214FC29D51D1FA370D55FF"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_C506B3C5D7BC45F1890B6013931A61B3"
             {
             "Name" = "8:MyHImage"
             "Arguments" = "8:"
@@ -650,7 +652,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_440CFB95DB88487597DCDCDC541BE74A"
+            "Target" = "8:_669D04396ECB45B7AF43227234E4774A"
             "Folder" = "8:_48A18E00182F4CABBCC8A1FC48B83CCB"
             "WorkingFolder" = "8:_287BED4DCA9C4AA9858D68E5053E4227"
             "Icon" = "8:_49690874DBF1407CA9C1834A349E77CD"
@@ -1055,34 +1057,6 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_440CFB95DB88487597DCDCDC541BE74A"
-            {
-            "SourcePath" = "8:..\\MyViewDicImage\\obj\\Release\\MyHImage.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_287BED4DCA9C4AA9858D68E5053E4227"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{64C25705-603D-460D-BE2E-7780AD06F68B}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
         }
     }
 }

@@ -28,16 +28,23 @@ namespace VM.Halcon
     }
     public partial class VMHWindowControl : UserControl
     {
-
+        #region 与其他项目交互信息
         public Action<string> actStr = null;
         public Action<MyAction> actClick = null;
         void doAction(MyAction action)
         {
             if (actClick != null)
                 actClick(action);
-
         }
-        ToolStripMenuItem loacation_strip;
+        void doActionStr(string _s)
+        {
+            if (actStr != null)
+                actStr(_s);
+        }
+        ToolStripMenuItem imgLoacation_strip;
+        ToolStripMenuItem imgSaveAs_strip;
+        #endregion
+
 
         #region 私有变量定义.
         public HWindow /**/                 hv_window;                      //halcon窗体控件的句柄 this.mCtrl_HWindow.HalconWindow;
@@ -57,20 +64,19 @@ namespace VM.Halcon
         private bool    /**/                 drawModel = false;             //绘制模式下,不允许缩放和鼠标右键菜单
         #endregion
         public ViewWindow ViewController;    /**/                    //ViewWindow
-        public HWindowControl hControl;   /**/  
-        
-        
-        // 当前halcon窗口
-        //public double positionX, positionY;
-        public int positionX, positionY;
+        public HWindowControl hControl;   /**/
 
+
+        // 当前halcon窗口
+
+        public int positionX, positionY;
         public bool BarVisible = true;
         //鼠标单击次数
         int i = 0;
         public static bool IsDesignMode()//是否处于设计模式判断
         {
             bool returnFlag = false;
-            #if DEBUG
+#if DEBUG
             if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
             {
                 returnFlag = true;
@@ -79,7 +85,7 @@ namespace VM.Halcon
             {
                 returnFlag = true;
             }
-            #endif
+#endif
             return returnFlag;
         }
         /// <summary>
@@ -117,7 +123,7 @@ namespace VM.Halcon
             saveImg_strip.Click += new EventHandler((s, e) => SaveImage());
             saveWindow_strip = new ToolStripMenuItem("保存缩略图像");
             saveWindow_strip.Click += new EventHandler((s, e) => SaveWindowDump());
-           
+
             histogram_strip = new ToolStripMenuItem("显示直方图(H)");
             histogram_strip.CheckOnClick = true;
             histogram_strip.Checked = false;
@@ -126,8 +132,12 @@ namespace VM.Halcon
             openImage_strip.Click += new EventHandler((s, e) => doAction(MyAction.ImgLoad));
 
 
-            loacation_strip = new ToolStripMenuItem("打开文件所在的位置");
-            loacation_strip.Click += new EventHandler((s, e) => doAction(MyAction.ImgLocation));
+            imgLoacation_strip = new ToolStripMenuItem("打开文件所在的位置");
+            imgLoacation_strip.Click += new EventHandler((s, e) => doAction(MyAction.ImgLocation));
+
+
+            imgSaveAs_strip = new ToolStripMenuItem("图片另存为...");
+            imgSaveAs_strip.Click += new EventHandler((s, e) => doAction(MyAction.ImgSaveAs));
 
             //openImage_strip.Click += new EventHandler((s, e) => OpenImage());
 
@@ -145,7 +155,8 @@ namespace VM.Halcon
             hv_MenuStrip.Items.Add(new ToolStripSeparator());
             hv_MenuStrip.Items.Add(openImage_strip);
 
-            hv_MenuStrip.Items.Add(loacation_strip);
+            hv_MenuStrip.Items.Add(imgSaveAs_strip);
+            hv_MenuStrip.Items.Add(imgLoacation_strip);
 
             fitWindow_strip.Enabled = false;
             fitImage_strip.Enabled = false;
@@ -162,9 +173,9 @@ namespace VM.Halcon
             this.SizeChanged += VMHWindowControl_SizeChanged;
         }
 
-      
 
-      
+
+
 
         private void VMHWindowControl_SizeChanged(object sender, EventArgs e)
         {
@@ -197,7 +208,7 @@ namespace VM.Halcon
             }
         }
 
-       
+
 
         /// <summary>
         /// 绘制模式下,不允许缩放和鼠标右键菜单
@@ -306,7 +317,7 @@ namespace VM.Halcon
             else
             {
                 ViewController.ClearWindow();
-                if (Image!=null && Image.IsInitialized())
+                if (Image != null && Image.IsInitialized())
                 {
                     ViewController.displayImageWithoutFit(Image);
                 }
@@ -382,7 +393,7 @@ namespace VM.Halcon
         private void SaveWindowDump()
         {
             SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "tif图像|*.tif|BMP图像|*.bmp|PNG图像|*.png|JPG图像|*.jpg";//|所有文件|*.*
+            sfd.Filter = "|JPG图像|*.jpg|tif图像|*.tif|BMP图像|*.bmp|PNG图像|*.png";//|所有文件|*.*
             sfd.FilterIndex = 1;
             if (sfd.ShowDialog() == DialogResult.OK)
             {
@@ -402,7 +413,7 @@ namespace VM.Halcon
             {
                 if (string.IsNullOrEmpty(sfd.FileName)) { return; }
                 FileInfo _FileInfo = new FileInfo(sfd.FileName);
-                HOperatorSet.WriteImage(hv_image, Path.GetExtension(sfd.FileName).Replace(".", "").Replace("tif","tiff"), 0, sfd.FileName);
+                HOperatorSet.WriteImage(hv_image, Path.GetExtension(sfd.FileName).Replace(".", "").Replace("tif", "tiff"), 0, sfd.FileName);
             }
         }
         /// <summary>
@@ -475,35 +486,30 @@ namespace VM.Halcon
                 {
                     string str_value = string.Empty;
                     string zoomRatioStr = string.Empty;
-                    HOperatorSet.CountChannels(hv_image, out HTuple channel_count);
-
+                    string str_position = string.Empty;
 
                     hv_window.GetMposition(out positionY, out positionX, out int button_state);
 
-                    //string XStr = positionX.ToString("f2");
-                    //string YStr = positionY.ToString("f2");
 
-                    string str_position = string.Format("Rc: {0}, {1}", positionY, positionX);
-                  
-                    //string str_position = string.Format("X: {0:0000}, Y: {1:0000}", positionX, positionY);
                     bool _isXOut = (positionX < 0 || positionX >= hv_imageWidth);
                     bool _isYOut = (positionY < 0 || positionY >= hv_imageHeight);
                     if (!_isXOut && !_isYOut)
                     {
                         HTuple grayVal = hv_image.GetGrayval((int)positionY, (int)positionX);
 
-                       
-                        double zoomScale = 1 /ViewController._hWndControl.ZoomWndFactor;
-                        string zoomScaleStr1 = zoomScale.ToString("f4");
-                        double temp = Convert.ToDouble(zoomScaleStr1) * 100;
-                        string zoomScaleStr2 = " 缩放率:" + temp.ToString("f2") + "%";
+                        //缩放率
+                        //double zoomScale = 1 /ViewController._hWndControl.ZoomWndFactor;
+                        //string zoomScaleStr1 = zoomScale.ToString("f4");
+                        //double temp = Convert.ToDouble(zoomScaleStr1) * 100;
+                        //string zoomScaleStr2 = " 缩放率:" + temp.ToString("f2") + "%";
 
 
-                        str_value =string.Format("Gv: {0}",
+                        str_value = string.Format("Gv: {0}",
                             string.Join(",", from v in grayVal.ToSArr()
                                              select v.ToString().PadLeft(3, '0')));
-                        if (actStr!=null)
-                        actStr(string.Format("[ {0} ]\t[ {1} ]\t[ {2} ]",str_imgSize , str_value, str_position));
+                        str_position = string.Format("Rc: {0}, {1}", positionY, positionX);
+
+                        doActionStr(string.Format("[ {0} ]\t[ {1} ]\t[ {2} ]", str_imgSize, str_value, str_position));
                     }
 
                 }
@@ -555,7 +561,7 @@ namespace VM.Halcon
         /// 默认红颜色显示
         /// </summary>
         /// <param name="hObj">传入的region.xld,image</param>
-        public void DispObj(HObject hObj,bool isFillDis)
+        public void DispObj(HObject hObj, bool isFillDis)
         {
             lock (this)
             {
@@ -574,7 +580,7 @@ namespace VM.Halcon
         /// </summary>
         /// <param name="hObj">传入的region.xld,image</param>
         /// <param name="color">颜色</param>
-        public void DispObj(HObject hObj, string color,bool isFillDis)
+        public void DispObj(HObject hObj, string color, bool isFillDis)
         {
             lock (this)
             {
@@ -620,7 +626,7 @@ namespace VM.Halcon
                     {
                         lock (this)
                         {
-                            ViewController.DispHobject(roi.hobject, roi.drawColor,false);
+                            ViewController.DispHobject(roi.hobject, roi.drawColor, false);
                         }
                     }
                     else
@@ -801,7 +807,7 @@ namespace VM.Halcon
                             {
                                 case 0:
                                     {
-                                        if (region!=null && region.IsInitialized())
+                                        if (region != null && region.IsInitialized())
                                             region = region.Union2(brushRegion);
                                         else
                                             region = brushRegion;
@@ -863,7 +869,7 @@ namespace VM.Halcon
                 HOperatorSet.ReadDict(dicPath, new HTuple(), new HTuple(), out outDic);
 
                 addDic(outDic);
-               // ViewController.repaint();
+                // ViewController.repaint();
                 if (outDic != null)
                     outDic.Dispose();
             }
@@ -1016,6 +1022,6 @@ namespace VM.Halcon
 
 
 
-   
+
 }
 

@@ -76,26 +76,26 @@
                     <StatusBar Grid.Row="2" Background="{StaticResource BackgroundBrush}" >
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="400"/>
-                                <ColumnDefinition Width="540" />
-                                <ColumnDefinition Width="480"/>
+                                <ColumnDefinition Width="600"/>
+                                <ColumnDefinition Width="440" />
+                                <ColumnDefinition Width="380"/>
                             </Grid.ColumnDefinitions>
 
                             <Label FontSize="16"  Name="lblGray" Foreground="{StaticResource ForegroundBrush}" />
 
-                            <StackPanel  Orientation="Horizontal" Grid.Column="1"  HorizontalAlignment="Center"   >
-                                <Label Foreground="{StaticResource ForegroundBrush}"   Width="150" HorizontalContentAlignment="Right" FontSize="18"   x:Name="label_SerialNumber" Content="【0/0】"   HorizontalAlignment="Left"  VerticalAlignment="Top"  IsEnabled="False"/>
-
+                            <StackPanel  Orientation="Horizontal" Grid.Column="1"  HorizontalAlignment="Left"   >
+                              
                                 <myc:IconButton  ImagePath="{StaticResource pd_first_page}" Margin="10,0,0,0"   ToolTip="第一个"  Click="btnFirst_Click"   Style="{StaticResource myBtStyle32}"      />
                                 <myc:IconButton ImagePath="{StaticResource pd_GoBack}" Margin="15,0,0,0"  ToolTip="上一个 A" Click="btnPre_Click"  Style="{StaticResource myBtStyle32}"    />
                                 <myc:IconButton ImagePath="{StaticResource pd_Goforward}" Margin="15,0,0,0"  ToolTip="下一个 D"  Click="btnNet_Click"  Style="{StaticResource myBtStyle32}"     />
                                 <myc:IconButton ImagePath="{StaticResource pd_last_page}" Margin="15,0,0,0"  ToolTip="最后一个" Click="btnLast_Click"  Style="{StaticResource myBtStyle32}"     />
 
                                 <myc:IconButton ImagePath="{StaticResource pd_delete}" Margin="15,0,0,0"  ToolTip="删除" Click="btnDelete_Click"  Style="{StaticResource myBtStyle32}"     />
+                                <Label Foreground="{StaticResource ForegroundBrush}"   Width="150" HorizontalContentAlignment="Center" FontSize="18"   x:Name="label_SerialNumber" Content="【0/0】"   HorizontalAlignment="Left"  VerticalAlignment="Top"  IsEnabled="False"/>
 
                             </StackPanel>
 
-                            <Label FontSize="14" Foreground="{StaticResource ForegroundBrush}" Width="480" Grid.Column="2" Name="lblImageName" HorizontalContentAlignment="Right" />
+                            <Label FontSize="14" Foreground="{StaticResource ForegroundBrush}" Width="380" Grid.Column="2" Name="lblImageName" HorizontalContentAlignment="Right" />
                         </Grid>
                     </StatusBar>
 

@@ -13,8 +13,6 @@
 
             <Color x:Key="BackgroundColor">#707070</Color>
             <Color x:Key="ForegroundColor">#FFFFFF</Color>
-            
-            
 
             <!-- 创建对应的刷子 -->
             <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource BackgroundColor}" />
